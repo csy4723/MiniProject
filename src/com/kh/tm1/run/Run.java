@@ -6,9 +6,9 @@ public class Run {
 		// TODO Auto-generated method stub
 
 		
-		System.out.println("안녕하세요");
-		System.out.println();
-		System.out.println("반갑습니다.");
+		System.out.println("깃헙테스트 입니다.");
+		System.out.println("최서영 깃헙테스트 끝!!");
+		 
 		
 		
 	}
