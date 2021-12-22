@@ -7,6 +7,8 @@ public class Run {
 
 		
 		System.out.println("안녕하세요 최서영입니다.");
+		
+		
 	}
 
 }
