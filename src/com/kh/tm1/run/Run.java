@@ -10,6 +10,8 @@ public class Run {
 		System.out.println("최서영 깃헙테스트 끝!!");
 		
 		System.out.println("최경민 깃헙테스트");
+		 
+		System.out.println("test1");
 		
 		
 	}
