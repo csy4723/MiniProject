@@ -18,6 +18,8 @@ public class Run {
 		System.out.println("test1");
 		System.out.println("12.24");
 		
+		System.out.println("2121.12.24 8시 45분");
+		
 	}
 
 }
