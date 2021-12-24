@@ -8,7 +8,7 @@ public class Run {
 		
 
 		System.out.println("test");
-		
+		System.out.println(3);
 		
 		
 	}
