@@ -23,6 +23,8 @@ public class Run {
 		System.out.println("12.24");
 >>>>>>> refs/heads/master
 		
+		System.out.println("2121.12.24 8시 45분");
+		
 	}
 
 }
