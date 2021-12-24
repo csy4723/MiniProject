@@ -6,7 +6,7 @@ public class Run {
 		// TODO Auto-generated method stub
 
 		
-		
+		System.out.println(1);
 		
 		
 	}
