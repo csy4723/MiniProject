@@ -16,7 +16,7 @@ public class Run {
 		System.out.println("최경민 깃헙테스트");
 		 
 		System.out.println("test1");
-		
+		System.out.println("12.24");
 		
 	}
 
