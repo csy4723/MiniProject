@@ -5,7 +5,7 @@ import java.util.Calendar;
 
 public class Write {// 글 기본 토대가 되는 클래스, 이거 그대로 쓰셔도 좋고 딴 클래스 만드셔서 상속해서 오버라이딩 해도 좋고.. -서영
 	private String title;
-	private String content;
+	private String content; 
 	private Calendar date;
 	private String userId;
 	
