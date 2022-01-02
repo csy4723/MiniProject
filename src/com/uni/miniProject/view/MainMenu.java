@@ -72,6 +72,7 @@ public class MainMenu {
 			case 1:
 				break;
 			case 2:
+				campSearch();
 				break;
 			case 3:
 				break;
@@ -152,6 +153,51 @@ public class MainMenu {
 
 		}
 
+	}
+	public void campSearch() {
+		while (true) {
+			System.out.println("===캠핑장 예약===");
+			System.out.println("1. 캠핑장 검색");
+			System.out.println("2. 캠핑장 정렬");
+			System.out.println("9. 이전 메뉴로");
+			
+			System.out.println("메뉴 선택 : ");
+			int search = sc.nextInt();
+			sc.nextLine();
+			
+			switch (search) {
+			
+			case 1 : 
+				System.out.println("[등록된 캠핑장 목록]");
+				cc.campList();
+				
+				System.out.println("==캠핑장 검색==");
+				System.out.println("키워드 입력 : ");
+				String keyword = sc.nextLine();
+				
+				System.out.println("검색 결과 = ");
+				
+			case 2 : 
+				System.out.println("===캠핑장 정렬===");
+				System.out.println("1. 지역 오름차순 정렬");
+				System.out.println("2. 지역 내림차순 정렬");
+				System.out.println("3. 제목 오름차순 정렬");
+				System.out.println("4. 제목 내림차순 정렬");
+				System.out.println("5. 가격 오름차순 정렬");
+				System.out.println("6. 가격 내림차순 정렬");
+				System.out.println("9. 이전 메뉴로");
+				System.out.println("메뉴 선택 : ");
+				int campSort = sc.nextInt();
+				sc.nextLine();
+				
+			case 9 : 
+				return;
+				
+			default :
+				System.out.println("잘못 입력했습니다. 다시 입력해주세요.");
+				break;
+			}
+		}
 	}
 
 }
