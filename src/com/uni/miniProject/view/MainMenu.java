@@ -1,9 +1,11 @@
 package com.uni.miniProject.view;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import com.uni.miniProject.controller.CampingController;
 import com.uni.miniProject.controller.MemberController;
+import com.uni.miniProject.model.vo.Write;
 
 public class MainMenu {
 	public static String ID;
@@ -17,7 +19,7 @@ public class MainMenu {
 	}
 
 	public void mainMenu() {
-		cc.campRead(); // run에서 이걸 먼저 따로 실행하고 main 실행하면 camp이 자꾸 초기화 된다 왜인지 모를 
+		cc.campRead(); // run에서 이걸 먼저 실행하고 main 실행하면 camp이 자꾸 초기화 된다 왜인지 모를 
 		
 		while (true) {
 			System.out.println("1. 로그인 하시겠습니까? ");
@@ -69,7 +71,6 @@ public class MainMenu {
 			case 1:
 				break;
 			case 2:
-				//검색메소드 호출; 검색메소드에서 예약할 캠핑장 글번호 입력받고 매개변수로 담아서 예약 메소드호출(cc에 있음)
 				break;
 			case 3:
 				break;
@@ -103,7 +104,6 @@ public class MainMenu {
 
 			switch (adminMenu) {
 			case 1:
-				mc.everyWriting();
 				break;
 			case 2:
 				mc.noticList();

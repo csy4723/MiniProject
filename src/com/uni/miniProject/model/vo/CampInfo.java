@@ -16,7 +16,7 @@ public class CampInfo implements Serializable{
 	private String campArea;
 	private int campPrice;
 	private Calendar campDay;
-	private String reservId; // 예약한 사람 아이디
+	private String reservId;
 	
 	public CampInfo() {
 		// TODO Auto-generated constructor stub
@@ -71,7 +71,7 @@ public class CampInfo implements Serializable{
 		this.reservId = reservId;
 	}
 
-	public String information() {//조회할때 나오는 출력
+	public String information() {
 		SimpleDateFormat sf = new SimpleDateFormat("yyyy년 MM월 dd일");
 		String date = sf.format(campDay.getTime());
 		

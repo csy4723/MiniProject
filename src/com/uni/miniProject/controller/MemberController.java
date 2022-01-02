@@ -66,10 +66,7 @@ public class MemberController {
 		
 	}
 
-	public void everyWriting() {// 전체 글 조회할 메소드
-		// TODO Auto-generated method stub
-		
-	}
+	
 
 	
 }

@@ -1,28 +1,20 @@
 package com.uni.miniProject.model.vo;
 
-import com.uni.miniProject.controller.CampingController;
-
 public class Member {
-
+	
 	private String userId;
 	private String userPwd;
 	private String name;
 	private int age;
 	private char gender;
 	private String email;
-	private int point; // 매개변수 생성자에 안들어가 있음 => 회원가입할때 정보 안 받음
-	
-	
-
-	CampInfo ci = new CampInfo();
-	CampingController cc = new CampingController();
-
+	private int point;
 	
 	public Member() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Member(String userId, String userPwd, String name, int age, char gender, String email) {
+	public Member(String userId, String userPwd, String name, int age, char gender, String email) {//point 없음 가입할때 입력받는 정보가 아님
 		super();
 		this.userId = userId;
 		this.userPwd = userPwd;
@@ -30,7 +22,6 @@ public class Member {
 		this.age = age;
 		this.gender = gender;
 		this.email = email;
-
 	}
 
 	public String getUserId() {
@@ -80,7 +71,9 @@ public class Member {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
+	
+	
+	
 	public int getPoint() {
 		return point;
 	}
@@ -90,18 +83,8 @@ public class Member {
 	}
 
 	public String information() {
-		int count = 0;
-		
-		
-		for(CampInfo c : cc.camp){//cc의 camp를 받아와서 인덱스별로 비교해가벼 reservId가 userId와 같은지 보고 count++
-			if(userId.equals(c.getReservId())) {
-				count++;
-			}
-		}
-		
 		return "아이디 :" +userId +"\n패스워드 : "+userPwd +"\n"+name+" 회원님의 정보\n 나이 : "+age+"\n성별 : "+gender+
-				"\n e-mail: "+email+"\n현재 포인트 : "+point+"\n현재 예약은  "+count+"건 입니다." ;// 예약상태 보여주기
-				
+				"\n e-mail: "+email+"\n현재 포인트 : "+point+"\n현재 예약상태 : " ;// 예약상태 보여주기
 	}
 
 }
