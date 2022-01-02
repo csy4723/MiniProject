@@ -16,7 +16,7 @@ public class CampInfo implements Serializable{
 	private String campArea;
 	private int campPrice;
 	private Calendar campDay;
-	private String reservId = "";
+	private String reservId = " ";
 	
 	public CampInfo() {
 		// TODO Auto-generated constructor stub
@@ -29,6 +29,16 @@ public class CampInfo implements Serializable{
 		this.campPrice = campPrice;
 		this.campDay = campDay;
 	}
+	
+	public CampInfo(String campName, String campArea, int campPrice, Calendar campDay, String reservId) {// 실행 read용
+		super();
+		this.campName = campName;
+		this.campArea = campArea;
+		this.campPrice = campPrice;
+		this.campDay = campDay;
+		this.reservId = reservId;
+	}
+
 
 	public String getCampName() {
 		return campName;
@@ -84,7 +94,7 @@ public class CampInfo implements Serializable{
 		SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
 		String date = sf.format(campDay.getTime());
 		return campName + "," + campArea + "," + campPrice + ","
-				+ date;
+				+ date +"," +reservId;
 	}
 	
 	

@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 import com.uni.miniProject.controller.CampingController;
 import com.uni.miniProject.controller.MemberController;
+import com.uni.miniProject.model.vo.CampInfo;
 import com.uni.miniProject.model.vo.Write;
 
 public class MainMenu {
@@ -79,6 +80,7 @@ public class MainMenu {
 			case 5:
 				break;
 			case 9:
+				
 				cc.campWrite();
 				System.out.println("프로그램이 종료됩니다.");
 				return;

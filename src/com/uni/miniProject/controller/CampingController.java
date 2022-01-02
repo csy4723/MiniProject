@@ -92,8 +92,6 @@ public class CampingController {
 
 			String temp = null;
 			while ((temp = br.readLine()) != null) {
-				
-			
 
 				String[] arr = temp.split(",");
 				
@@ -103,12 +101,14 @@ public class CampingController {
 				int price = Integer.valueOf(arr[2]);
 
 				String[] arr2 = arr[3].split("-");
+				
+				String reservId = arr[4];
 
 				int year = Integer.valueOf(arr2[0]);
 				int month = Integer.valueOf(arr2[1]);
 				int day = Integer.valueOf(arr2[2]);
 
-				CampInfo c = new CampInfo(name, area, price, setCalendar(year, month, day));
+				CampInfo c = new CampInfo(name, area, price, setCalendar(year, month, day), reservId);
 				
 				camp.add(c);
 
@@ -207,16 +207,14 @@ public class CampingController {
 		System.out.println("캠핑장 이름 : ");
 		String name = sc.nextLine();
 		
-		int i = 0;
+		
 		for(CampInfo c : camp) {
 			
 			if(c.getCampName().equals(name)) {
 			
-				camp.remove(i);
+				c.setReservId("");
 				System.out.println("성공적으로 취소되었습니다.");
 				return;
-			}else {
-				i++;
 			}
 			
 		}
