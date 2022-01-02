@@ -11,6 +11,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Scanner;
 
 import com.uni.miniProject.model.vo.CampInfo;
@@ -176,10 +177,51 @@ public class CampingController {
 	
 	public void reservation(int num) {//예약 메소드->검색메소드에서 해당 캠핑장 인덱스 넘겨받아야 됨
 		
+		
+		System.out.println("예약하시겠습니까? (y/n)");
+		String yn = sc.nextLine();
+		
+		if(yn.equalsIgnoreCase("N")) {
+			return;
+		}
+		
 		camp.get(num).setReservId(MainMenu.ID);
 		
 		System.out.println(MainMenu.ID+"님이 "+camp.get(num).getCampName()+"을 예약했습니다.");
 		System.out.println("조회 밎 취소는 마이페이지에서 하실 수 있습니다.");
+		
+		
+		
+	}
+	
+	public void cancleReserv() {
+		System.out.println("취소할 예약을 선택해주세요");
+		
+		for(CampInfo c : camp) {
+			if(c.getReservId().equals(MainMenu.ID)) {
+				System.out.println(c.information());
+				
+			}
+		}
+		
+		System.out.println("캠핑장 이름 : ");
+		String name = sc.nextLine();
+		
+		int i = 0;
+		for(CampInfo c : camp) {
+			
+			if(c.getCampName().equals(name)) {
+			
+				camp.remove(i);
+				System.out.println("성공적으로 취소되었습니다.");
+				return;
+			}else {
+				i++;
+			}
+			
+		}
+		
+		System.out.println("입력한 이름과 일치하는 예약정보가 없습니다.");
 		
 		
 		
