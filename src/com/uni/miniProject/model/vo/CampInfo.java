@@ -16,7 +16,7 @@ public class CampInfo implements Serializable{
 	private String campArea;
 	private int campPrice;
 	private Calendar campDay;
-	private String reservId;
+	private String reservId = "";
 	
 	public CampInfo() {
 		// TODO Auto-generated constructor stub

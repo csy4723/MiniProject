@@ -56,9 +56,12 @@ public class CampingController {
 	}
 
 	public void campList() {
-
+	
 		for(int i = 0; i<camp.size(); i++) {
-			System.out.println(camp.get(i).information());
+			if(camp.get(i).getReservId().isBlank()) {
+				
+				System.out.println(camp.get(i).information());
+			}
 		}
 		
 	}
