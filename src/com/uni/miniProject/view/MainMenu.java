@@ -107,7 +107,7 @@ public class MainMenu {
 			switch (adminMenu) {
 			case 1:
 				break;
-			case 2:
+			case 2: 
 				mc.noticList();
 				System.out.println("1. 공지 사항을 등록하시겠습니까? ");
 				System.out.println("2. 공지사항을 삭제하시겠습니까? ");

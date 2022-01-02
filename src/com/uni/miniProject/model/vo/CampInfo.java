@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-import com.uni.miniProject.view.MainMenu;
+import com.uni.miniProject.view.MainMenu; 
 
 public class CampInfo implements Serializable{
 	

@@ -39,7 +39,7 @@ public class CampingController {
 		System.out.println("가격 : ");
 		int price = sc.nextInt();
 		sc.nextLine();
-
+ 
 		System.out.println("이용 날짜(yyyy-MM-dd) : ");
 		String date = sc.nextLine();
 		String[] dArr = date.split("-");
