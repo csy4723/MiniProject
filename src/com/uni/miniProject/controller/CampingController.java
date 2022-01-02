@@ -14,6 +14,7 @@ import java.util.Calendar;
 import java.util.Scanner;
 
 import com.uni.miniProject.model.vo.CampInfo;
+import com.uni.miniProject.view.MainMenu;
 
 public class CampingController {
 	ArrayList<CampInfo> camp = new ArrayList<CampInfo>();// 캠핑 예약 상품 담을 리스트
@@ -126,7 +127,7 @@ public class CampingController {
 	
 	
 	
-	public void campWrite() {
+	public void campWrite() {// 프로그램 종료할때 저장하는 거 
 		
 		File folder = new File("C:\\Camping List");
 		
@@ -161,12 +162,30 @@ public class CampingController {
 		
 	}
 
-	Calendar setCalendar(int year, int month, int day) {
+	public Calendar setCalendar(int year, int month, int day) {
 
 		Calendar cal = Calendar.getInstance();
 		cal.set(year, month, day);
 
 		return cal;
 	}
+	
+	
+	public void reservation(int num) {//예약 메소드->검색메소드에서 해당 캠핑장 인덱스 넘겨받아야 됨
+		
+		camp.get(num).setReservId(MainMenu.ID);
+		
+		System.out.println(MainMenu.ID+"님이 "+camp.get(num).getCampName()+"을 예약했습니다.");
+		System.out.println("조회 밎 취소는 마이페이지에서 하실 수 있습니다.");
+		
+		
+		
+	}
+	
+	
+	
+	
+	
+	
 
 }
