@@ -53,6 +53,7 @@ public class MemberController {
 	public void deleteNotice() {
 		System.out.println("삭제할 공지사항의 글번호를 입력하시오 : ");
 		int index = sc.nextInt();
+		sc.nextLine();
 		index--;
 		
 		System.out.println(notic.get(index));

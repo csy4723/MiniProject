@@ -111,6 +111,7 @@ public class MainMenu {
 				mc.noticList();
 				System.out.println("1. 공지 사항을 등록하시겠습니까? ");
 				System.out.println("2. 공지사항을 삭제하시겠습니까? ");
+				System.out.println("이전으로 돌아가시려면 아무 번호나 누르세요");
 				int nMenu = sc.nextInt();
 				sc.nextLine();
 
@@ -118,6 +119,8 @@ public class MainMenu {
 					mc.postNotice();
 				} else if (nMenu == 2) {
 					mc.deleteNotice();
+				}else {
+					System.out.println("이전메뉴로 돌아갑니다.");
 				}
 
 				break;
@@ -125,6 +128,7 @@ public class MainMenu {
 				cc.campList();
 				System.out.println("1. 캠핑장을 등록하시겠습니까? ");
 				System.out.println("2. 캠핑장을 삭제하시겠습니까? ");
+				System.out.println("이전으로 돌아가시려면 아무 번호나 누르세요");
 				int cMenu = sc.nextInt();
 				sc.nextLine();
 
@@ -132,10 +136,13 @@ public class MainMenu {
 					cc.campRegister();
 				} else if (cMenu == 2) {
 					cc.campDelete();
+				}else {
+					System.out.println("이전메뉴로 돌아갑니다.");
 				}
 
 				break;
 			case 9:
+				System.out.println("메인 메뉴로 돌아갑니다.");
 				return;
 			default:
 				System.out.println("잘못 입력했습니다.");
