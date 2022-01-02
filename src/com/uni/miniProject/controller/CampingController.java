@@ -11,10 +11,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
 import java.util.Scanner;
 
 import com.uni.miniProject.model.vo.CampInfo;
+import com.uni.miniProject.model.vo.Member;
 import com.uni.miniProject.view.MainMenu;
 
 public class CampingController {
@@ -22,6 +22,7 @@ public class CampingController {
 	Scanner sc = new Scanner(System.in);
 	CampInfo cinfo = new CampInfo();
 	FileOutputStream fos = null;
+	Member mem = new Member();
 
 	public CampingController() {
 		// TODO Auto-generated constructor stub
@@ -185,15 +186,37 @@ public class CampingController {
 			return;
 		}
 		
-		camp.get(num).setReservId(MainMenu.ID);
+		int result = payment();
+		
+		if(result == 0) {
+			System.out.println("현재 포인트가 부족합니다.");
+		}else if(result == 1) {
+			
+			camp.get(num).setReservId(MainMenu.ID);
 		
 		System.out.println(MainMenu.ID+"님이 "+camp.get(num).getCampName()+"을 예약했습니다.");
+		System.out.println("잔여 포인트 : "+ mem.getPoint());
 		System.out.println("조회 밎 취소는 마이페이지에서 하실 수 있습니다.");
-		
-		
+			
+		}
 		
 	}
 	
+	private int payment() {// 포인트 결제 
+		
+		int mP = mem.getPoint();
+		int cP = cinfo.getCampPrice();
+		int result = 0;
+		if(mP < cP) {
+			result =  0;
+		}else if(mP >= cP) {
+		 result = 1; 
+		 mem.setPoint(mP - cP); 
+		}
+		
+		return result;
+	}
+
 	public void cancleReserv() {
 		System.out.println("취소할 예약을 선택해주세요");
 		
