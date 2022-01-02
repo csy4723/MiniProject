@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+import com.uni.miniProject.view.MainMenu;
+
 public class CampInfo implements Serializable{
 	
 	/**
@@ -14,6 +16,7 @@ public class CampInfo implements Serializable{
 	private String campArea;
 	private int campPrice;
 	private Calendar campDay;
+	private String reservId; // 예약한 사람 아이디
 	
 	public CampInfo() {
 		// TODO Auto-generated constructor stub
@@ -60,16 +63,24 @@ public class CampInfo implements Serializable{
 	}
 
 
-	public String information() {
+	public String getReservId() {
+		return reservId;
+	}
+
+	public void setReservId(String reservId) {
+		this.reservId = reservId;
+	}
+
+	public String information() {//조회할때 나오는 출력
 		SimpleDateFormat sf = new SimpleDateFormat("yyyy년 MM월 dd일");
 		String date = sf.format(campDay.getTime());
 		
-		return "CampInfo [campName=" + campName + ", campArea=" + campArea + ", campPrice=" + campPrice + ", campDay="
-				+ date + "]";
+		return campName +" 캠핑장의 위치는 "+ campArea + "이고 가격은 " + campPrice + "원이다. (날짜 : "
+				+ date + ")";
 	}
 
 	@Override
-	public String toString() {
+	public String toString() { // 파일로 입출력할 때 사용
 		SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
 		String date = sf.format(campDay.getTime());
 		return campName + "," + campArea + "," + campPrice + ","

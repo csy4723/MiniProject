@@ -9,7 +9,7 @@ public class Write {// 글 기본 토대가 되는 클래스, 이거 그대로 �
 	private Calendar date;
 	private String userId;
 	
-	public Write() {
+	public Write() {// 여기다 정렬메소드 추가해야겠다.
 		// TODO Auto-generated constructor stub
 	}
 

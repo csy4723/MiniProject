@@ -11,6 +11,14 @@ public class MemberController {
 	Scanner sc = new Scanner(System.in);
 	Write wr = new Write();
 	ArrayList<Write> notic = new ArrayList<Write>();// 공지사항 담을 리스트
+	CampingController cc = new CampingController();
+	{
+		notic.add(new Write("화재 조심", "겨울이라 건조하니 화재조심합시다", cc.setCalendar(2021, 0, 12), "admin"));
+		notic.add(new Write("소음 자제", "공공장소에서는 조용히 합시다", cc.setCalendar(2021, 3, 24), "admin"));
+		notic.add(new Write("거리 두기", "코로나 조심, 또 조심", cc.setCalendar(2021, 6, 02), "admin"));
+		notic.add(new Write("할인 이벤트", "내년까지 대폭 할인합니다.", cc.setCalendar(2021, 12, 10), "admin"));
+	}
+	
 	
 	public MemberController() {
 		// TODO Auto-generated constructor stub
@@ -55,6 +63,11 @@ public class MemberController {
 		}else {
 			System.out.println("삭제를 취소합니다.");
 		}
+		
+	}
+
+	public void everyWriting() {// 전체 글 조회할 메소드
+		// TODO Auto-generated method stub
 		
 	}
 
