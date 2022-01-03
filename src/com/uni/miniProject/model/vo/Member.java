@@ -23,7 +23,6 @@ public class Member {
 		this.gender = gender;
 		this.email = email;
 	}
-	
 
 	public String getUserId() {
 		return userId;
