@@ -9,7 +9,7 @@ import com.uni.miniProject.controller.TransferController;
 
 import com.uni.miniProject.controller.UserController;
 
-import com.uni.miniProject.model.vo.UserInfo;
+
 
 import com.uni.miniProject.model.vo.CampInfo;
 
