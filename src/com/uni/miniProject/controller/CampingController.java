@@ -54,6 +54,8 @@ public class CampingController {
 		cinfo = new CampInfo(Name, Area, price, cDate);
 
 		camp.add(cinfo);// 여기까지 ArrayList에 캠핑목록 담는 거
+		
+		
 
 	}
 
@@ -138,7 +140,7 @@ public class CampingController {
 		
 		if(!folder.exists()) {
 			folder.mkdir();
-		}
+		}/// 없어도 될듯?
 		
 		File ex = new File(folder, "Camping List.txt");
 		
@@ -249,7 +251,7 @@ public class CampingController {
 			
 			if(c.getCampName().equals(name)) {
 			
-				c.setReservId("");
+				c.setReservId(" ");
 				System.out.println("성공적으로 취소되었습니다.");
 				return;
 			}
