@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import com.uni.miniProject.controller.CampingController;
 import com.uni.miniProject.controller.MemberController;
+import com.uni.miniProject.controller.ReviewController;
 import com.uni.miniProject.controller.TransferController;
 import com.uni.miniProject.controller.UserController;
 
@@ -14,6 +15,7 @@ public class MainMenu {
 	CampingController cc = new CampingController();
 	TransferController tc = new TransferController();
 	UserController uc = new UserController();
+	ReviewController rc = new ReviewController();
 	Scanner sc = new Scanner(System.in);
 
 	public MainMenu() {
@@ -191,8 +193,10 @@ public class MainMenu {
 				return;
 			default:
 				System.out.println("잘못 입력했습니다. 다시 입력하세요");
-				break;}}}
-
+				break;
+			}
+		}
+	}
 
 	public void campSearch() {
 		while (true) {
@@ -208,36 +212,48 @@ public class MainMenu {
 			switch (search) {
 			
 			case 1 : 
-				System.out.println("[등록된 캠핑장 목록]");
-				cc.campList();
-				
-				System.out.println("==캠핑장 검색==");
-				System.out.println("키워드 입력 : ");
-				String keyword = sc.nextLine();
-				
-				System.out.println("검색 결과 = ");
-				
+				cc.campSearch();
+				break;
 			case 2 : 
-				System.out.println("===캠핑장 정렬===");
-				System.out.println("1. 지역 오름차순 정렬");
-				System.out.println("2. 지역 내림차순 정렬");
-				System.out.println("3. 제목 오름차순 정렬");
-				System.out.println("4. 제목 내림차순 정렬");
-				System.out.println("5. 가격 오름차순 정렬");
-				System.out.println("6. 가격 내림차순 정렬");
-				System.out.println("9. 이전 메뉴로");
-				System.out.println("메뉴 선택 : ");
-				int campSort = sc.nextInt();
-				sc.nextLine();
-				
+				cc.campSort();
+				break;
 			case 9 : 
 				return;
-				
 			default :
 				System.out.println("잘못 입력했습니다. 다시 입력해주세요.");
 				break;
 			}
 		}
+	}public void ReviewBoard() {
+		while (true) {
+			System.out.println("===리뷰 게시판===");
+			System.out.println("1. 리뷰 글 쓰기");
+			System.out.println("2. 리뷰 글 검색");
+			System.out.println("3. 리뷰 글 정렬");
+			System.out.println("4. 내 글 조회");
+			System.out.println("9. 이전 메뉴로");
+			int Menu = sc.nextInt();
+			sc.nextLine();
+			
+			switch (Menu) {
+			case 1:
+				rc.reviewWrite();
+				break;
+			case 2:
+				rc.reviewSearch();
+				break;
+			case 3:
+				rc.reviewSort();
+				break;
+			case 4:
+				rc.myReview();
+				break;
+			case 9:
+				return;
+			default:
+				System.out.println("잘못 입력했습니다. 다시 입력해주세요.");
+				break;
+			}
+		}
 	}
-
 }
