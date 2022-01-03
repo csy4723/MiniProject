@@ -176,7 +176,7 @@ public class CampingController {
 	}
 	
 	
-	public void reservation(int num) {//예약 메소드->검색메소드에서 해당 캠핑장 인덱스 넘겨받아야 됨
+	public void reservation(String res) {//예약 메소드->검색메소드에서 해당 캠핑장 인덱스 넘겨받아야 됨
 		
 		
 		System.out.println("예약하시겠습니까? (y/n)");
@@ -192,11 +192,11 @@ public class CampingController {
 			System.out.println("현재 포인트가 부족합니다.");
 		}else if(result == 1) {
 			
-			camp.get(num).setReservId(MainMenu.ID);
-		
-		System.out.println(MainMenu.ID+"님이 "+camp.get(num).getCampName()+"을 예약했습니다.");
-		System.out.println("잔여 포인트 : "+ mem.getPoint());
-		System.out.println("조회 밎 취소는 마이페이지에서 하실 수 있습니다.");
+//			camp.get(num).setReservId(MainMenu.ID);
+//		
+//		System.out.println(MainMenu.ID+"님이 "+camp.get(num).getCampName()+"을 예약했습니다.");
+//		System.out.println("잔여 포인트 : "+ mem.getPoint());
+//		System.out.println("조회 밎 취소는 마이페이지에서 하실 수 있습니다.");
 			
 		}
 		
