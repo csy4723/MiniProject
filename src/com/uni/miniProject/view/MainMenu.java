@@ -124,7 +124,7 @@ public class MainMenu {
 				}else {
 					System.out.println("이전메뉴로 돌아갑니다.");
 				}
-
+ 
 				break;
 			case 3:
 				cc.campList();

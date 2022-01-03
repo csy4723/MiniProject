@@ -13,7 +13,7 @@ public class Member {
 	public Member() {
 		// TODO Auto-generated constructor stub
 	}
-
+ 
 	public Member(String userId, String userPwd, String name, int age, char gender, String email) {//point 없음 가입할때 입력받는 정보가 아님
 		super();
 		this.userId = userId;
