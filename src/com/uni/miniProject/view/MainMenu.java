@@ -28,7 +28,7 @@ public class MainMenu {
 		
 		cc.campRead(); // run에서 이걸 먼저 실행하고 main 실행하면 camp이 자꾸 초기화 된다 왜인지 모를 
 
-	//	cc.campRead(); // run에서 이걸 먼저 실행하고 main 실행하면 camp이 자꾸 초기화 된다 왜인지 모를 
+	
 
 		
 		while (true) {
@@ -43,11 +43,11 @@ public class MainMenu {
 			switch (openMenu) {
 			case 1:
 				ID = "admin";// 유저가 아이디 입력한 값을 ID에 담아주세요
-				//uc.login();
+				uc.login();
 				out = true;
 				break;
 			case 2:
-				//uc.SignUp();
+				uc.SignUp();
 				out = true;
 				break;
 			default:
