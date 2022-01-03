@@ -20,7 +20,7 @@ public class CampInfo implements Serializable{
 	
 	public CampInfo() {
 		// TODO Auto-generated constructor stub
-	}
+	} 
 
 	public CampInfo(String campName, String campArea, int campPrice, Calendar campDay) {
 		super();

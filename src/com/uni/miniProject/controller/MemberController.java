@@ -19,7 +19,7 @@ public class MemberController {
 		notic.add(new Write("거리 두기", "코로나 조심, 또 조심", cc.setCalendar(2021, 6, 02), "admin"));
 		notic.add(new Write("할인 이벤트", "내년까지 대폭 할인합니다.", cc.setCalendar(2021, 12, 10), "admin"));
 	}
-	
+	 
 	
 	public MemberController() {
 		// TODO Auto-generated constructor stub

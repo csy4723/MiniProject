@@ -13,13 +13,13 @@ public class Run {
 		UserController uc = new UserController();
 		
 	
-		
+		 
 		
 //		cc.campRead();
 //		cc.campList();
 		mm.mainMenu();
-		uc.SignUp();
-		uc.login();
+//		uc.signUp();
+//		uc.logIn();
 
 	}
 
