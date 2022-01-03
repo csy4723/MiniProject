@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 import com.uni.miniProject.model.vo.CampInfo;
 import com.uni.miniProject.model.vo.Member;
-import com.uni.miniProject.model.vo.UserInfo;
+
 
 public class UserController {
 

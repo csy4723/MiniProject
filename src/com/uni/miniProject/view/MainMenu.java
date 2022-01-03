@@ -7,6 +7,12 @@ import com.uni.miniProject.controller.MemberController;
 import com.uni.miniProject.controller.TransferController;
 import com.uni.miniProject.controller.UserController;
 
+import com.uni.miniProject.controller.UserController;
+
+import com.uni.miniProject.model.vo.CampInfo;
+
+import com.uni.miniProject.model.vo.Write;
+
 public class MainMenu {
 	public static String ID;
 
@@ -23,7 +29,7 @@ public class MainMenu {
 	public void mainMenu() {
 		cc.campRead(); // run에서 이걸 먼저 실행하고 main 실행하면 camp이 자꾸 초기화 된다 왜인지 모를 
 
-		// cc.campRead(); // run에서 이걸 먼저 실행하고 main 실행하면 camp이 자꾸 초기화 된다 왜인지 모를
+		
 		boolean out = false;
 		
 		while (true) {
@@ -52,6 +58,31 @@ public class MainMenu {
 			default:
 				System.out.println("잘못 입력하셨습니다.다시 입력하세요");
 				continue;
+		while (!out) {
+			// cc.campRead(); // run에서 이걸 먼저 실행하고 main 실행하면 camp이 자꾸 초기화 된다 왜인지 모를
+				System.out.println("1. 로그인 하시겠습니까? ");
+				System.out.println("2. 회원 가입 하시겠습니까? ");
+				System.out.print("메뉴 입력 : ");
+				int openMenu = sc.nextInt();
+				sc.nextLine();
+
+				switch (openMenu) {
+				case 1:
+					// ID = "admin";// 유저가 아이디 입력한 값을 ID에 담아주세요
+
+					ID = uc.logIn();
+					out = true;
+					break;
+				case 2:
+
+					ID = uc.signUp();
+					out = true;
+					break;
+				default:
+					System.out.println("잘못 입력하셨습니다.다시 입력하세요");
+					continue;
+				}
+
 			}
 			
 			if(out) {
