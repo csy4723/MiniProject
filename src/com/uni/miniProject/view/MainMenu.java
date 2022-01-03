@@ -36,11 +36,11 @@ public class MainMenu {
 			switch (openMenu) {
 			case 1:
 				ID = "admin";// 유저가 아이디 입력한 값을 ID에 담아주세요
-				//uc.login();
+				uc.login();
 				out = true;
 				break;
 			case 2:
-				//uc.SignUp();
+				uc.SignUp();
 				out = true;
 				break;
 			default:

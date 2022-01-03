@@ -66,6 +66,22 @@ public class MemberController {
 		}
 		
 	}
+	
+	
+	public void everyWrite() {
+		// 리뷰글, 양도글, 자유게시판 다 불러와서 for문으로 출력하기 
+		
+		
+		
+	}
+	
+	public void eDelete() {
+		
+		//지우고 싶은 글의 리스트 이름과 글번호 or 제목을 대조해서 
+		// 삭제 
+		
+		
+	}
 
 	
 
