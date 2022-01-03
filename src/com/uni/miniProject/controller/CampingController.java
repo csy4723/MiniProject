@@ -270,7 +270,7 @@ public class CampingController {
 		
 	}
 	
-	public void campSeach() { // 검색과 예약
+	public void campSearch() { // 검색과 예약
 		System.out.println("[등록된 캠핑장 목록]");
 		campList();
 		

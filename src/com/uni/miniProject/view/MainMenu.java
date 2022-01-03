@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import com.uni.miniProject.controller.CampingController;
 import com.uni.miniProject.controller.MemberController;
+import com.uni.miniProject.controller.ReviewController;
 import com.uni.miniProject.controller.TransferController;
 import com.uni.miniProject.controller.UserController;
 
@@ -14,6 +15,7 @@ public class MainMenu {
 	CampingController cc = new CampingController();
 	TransferController tc = new TransferController();
 	UserController uc = new UserController();
+	ReviewController rc = new ReviewController();
 	Scanner sc = new Scanner(System.in);
 
 	public MainMenu() {
@@ -210,7 +212,7 @@ public class MainMenu {
 			switch (search) {
 			
 			case 1 : 
-				cc.campSeach();
+				cc.campSearch();
 				break;
 			case 2 : 
 				cc.campSort();
@@ -218,6 +220,37 @@ public class MainMenu {
 			case 9 : 
 				return;
 			default :
+				System.out.println("잘못 입력했습니다. 다시 입력해주세요.");
+				break;
+			}
+		}
+	}public void ReviewBoard() {
+		while (true) {
+			System.out.println("===리뷰 게시판===");
+			System.out.println("1. 리뷰 글 쓰기");
+			System.out.println("2. 리뷰 글 검색");
+			System.out.println("3. 리뷰 글 정렬");
+			System.out.println("4. 내 글 조회");
+			System.out.println("9. 이전 메뉴로");
+			int Menu = sc.nextInt();
+			sc.nextLine();
+			
+			switch (Menu) {
+			case 1:
+				rc.reviewWrite();
+				break;
+			case 2:
+				rc.reviewSearch();
+				break;
+			case 3:
+				rc.reviewSort();
+				break;
+			case 4:
+				rc.myReview();
+				break;
+			case 9:
+				return;
+			default:
 				System.out.println("잘못 입력했습니다. 다시 입력해주세요.");
 				break;
 			}
