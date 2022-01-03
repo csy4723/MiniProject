@@ -12,6 +12,7 @@ public class MemberController {
 	Write wr = new Write();
 	ArrayList<Write> notic = new ArrayList<Write>();// 공지사항 담을 리스트
 	CampingController cc = new CampingController();
+	
 	{ 
 		notic.add(new Write("화재 조심", "겨울이라 건조하니 화재조심합시다", cc.setCalendar(2021, 0, 12), "admin"));
 		notic.add(new Write("소음 자제", "공공장소에서는 조용히 합시다", cc.setCalendar(2021, 3, 24), "admin"));

@@ -1,18 +1,11 @@
 package com.uni.miniProject.view;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 import com.uni.miniProject.controller.CampingController;
 import com.uni.miniProject.controller.MemberController;
-<<<<<<< HEAD
-import com.uni.miniProject.controller.TrafsferController;
-import com.uni.miniProject.model.vo.TransferController;
-=======
+import com.uni.miniProject.controller.TransferController;
 import com.uni.miniProject.controller.UserController;
-import com.uni.miniProject.model.vo.CampInfo;
->>>>>>> refs/remotes/origin/master
-import com.uni.miniProject.model.vo.Write;
 
 public class MainMenu {
 	public static String ID;
@@ -28,7 +21,7 @@ public class MainMenu {
 	}
 
 	public void mainMenu() {
-	//	cc.campRead(); // run에서 이걸 먼저 실행하고 main 실행하면 camp이 자꾸 초기화 된다 왜인지 모를 
+		cc.campRead(); // run에서 이걸 먼저 실행하고 main 실행하면 camp이 자꾸 초기화 된다 왜인지 모를 
 		
 		while (true) {
 			System.out.println("1. 로그인 하시겠습니까? ");
@@ -192,9 +185,9 @@ public class MainMenu {
 				return;
 			default:
 				System.out.println("잘못 입력했습니다. 다시 입력하세요");
-				break;
+				break;}}}
 
-=======
+
 	public void campSearch() {
 		while (true) {
 			System.out.println("===캠핑장 예약===");
