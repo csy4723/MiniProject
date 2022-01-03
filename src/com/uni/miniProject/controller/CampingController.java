@@ -270,11 +270,14 @@ public class CampingController {
 		System.out.println("키워드 입력 : ");
 		String keyword = sc.nextLine();
 		
-		camp.contains(keyword);
-//		String search = camp.get(0).get(keyword).toString();
+		for(int i = 0; i < camp.size(); i++) {
+			if(camp.get(i).equals(keyword)) {
+				System.out.println(cinfo.information());
+			}
+		}
 		
 		System.out.println("검색 결과: ");
-		//SeachKeyword();
+
 		
 		System.out.println("어느 캠핑장으로 예약하시겠습니까? : ");
 		String res = sc.nextLine();

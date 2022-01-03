@@ -1,18 +1,11 @@
 package com.uni.miniProject.view;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 import com.uni.miniProject.controller.CampingController;
 import com.uni.miniProject.controller.MemberController;
-
-import com.uni.miniProject.controller.TrafsferController;
-import com.uni.miniProject.model.vo.TransferController;
-
+import com.uni.miniProject.controller.TransferController;
 import com.uni.miniProject.controller.UserController;
-import com.uni.miniProject.model.vo.CampInfo;
-
-import com.uni.miniProject.model.vo.Write;
 
 public class MainMenu {
 	public static String ID;
@@ -199,6 +192,7 @@ public class MainMenu {
 			default:
 				System.out.println("잘못 입력했습니다. 다시 입력하세요");
 				break;
+			}}}
 
 
 	public void campSearch() {
