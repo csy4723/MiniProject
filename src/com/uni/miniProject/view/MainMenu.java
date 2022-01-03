@@ -9,8 +9,6 @@ import com.uni.miniProject.controller.TransferController;
 
 import com.uni.miniProject.controller.UserController;
 
-
-
 import com.uni.miniProject.model.vo.CampInfo;
 
 import com.uni.miniProject.model.vo.Write;
@@ -30,16 +28,10 @@ public class MainMenu {
 
 	public void mainMenu() {
 
-		// cc.campRead(); // run에서 이걸 먼저 실행하고 main 실행하면 camp이 자꾸 초기화 된다 왜인지 모를
+		
 		boolean out = false;
 		while (!out) {
-
-			cc.campRead(); // run에서 이걸 먼저 실행하고 main 실행하면 camp이 자꾸 초기화 된다 왜인지 모를
-
 			// cc.campRead(); // run에서 이걸 먼저 실행하고 main 실행하면 camp이 자꾸 초기화 된다 왜인지 모를
-
-			while (true) {
-
 				System.out.println("1. 로그인 하시겠습니까? ");
 				System.out.println("2. 회원 가입 하시겠습니까? ");
 				System.out.print("메뉴 입력 : ");
@@ -64,7 +56,7 @@ public class MainMenu {
 				}
 
 			}
-		}
+		
 		while (true) {
 
 			System.out.println("====메인 메뉴===");
