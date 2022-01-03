@@ -11,8 +11,15 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Scanner;
- 
+
+import com.uni.miniProject.model.comparator.AscCampArea;
+import com.uni.miniProject.model.comparator.AscCampName;
+import com.uni.miniProject.model.comparator.AscCampPrice;
+import com.uni.miniProject.model.comparator.DescCampArea;
+import com.uni.miniProject.model.comparator.DescCampName;
+import com.uni.miniProject.model.comparator.DescCampPrice;
 import com.uni.miniProject.model.vo.CampInfo;
 import com.uni.miniProject.model.vo.Member;
 import com.uni.miniProject.view.MainMenu;
@@ -23,6 +30,7 @@ public class CampingController {
 	CampInfo cinfo = new CampInfo();
 	FileOutputStream fos = null;
 	Member mem = new Member();
+	
 
 	public CampingController() {
 		// TODO Auto-generated constructor stub
@@ -262,35 +270,96 @@ public class CampingController {
 		
 	}
 	
-	public void campSeach() {
+	public void campSeach() { // 검색과 예약
 		System.out.println("[등록된 캠핑장 목록]");
 		campList();
 		
 		System.out.println("===캠핑장 검색===");
-		System.out.println("키워드 입력 : ");
+		System.out.println("검색할 지역 입력 : ");
 		String keyword = sc.nextLine();
-		
+
+		System.out.println("===검색 결과===");
+
 		for(int i = 0; i < camp.size(); i++) {
-			if(camp.get(i).equals(keyword)) {
-				System.out.println(cinfo.information());
+			if(camp.get(i).getCampArea().equals(keyword)) {
+				System.out.println(camp.get(i).information());
 			}
 		}
 		
-		System.out.println("검색 결과: ");
-
-		
-		System.out.println("어느 캠핑장으로 예약하시겠습니까? : ");
+		System.out.println("예약하실 캠핑장 이름을 입력해주세요 : "); // 바로 예약
 		String res = sc.nextLine();
-		sc.nextLine();
 		
 		reservation(res);
 	}
 
-	
-	
-	
-	
-	
-	
+	public void campSort() {
+		while (true) {
+			System.out.println("===캠핑장 정렬===");
+			System.out.println("1. 제목 오름차순 정렬");
+			System.out.println("2. 제목 내림차순 정렬");
+			System.out.println("3. 지역 오름차순 정렬");
+			System.out.println("4. 지역 내림차순 정렬");
+			System.out.println("5. 가격 오름차순 정렬");
+			System.out.println("6. 가격 내림차순 정렬");
+			System.out.println("9. 이전 메뉴로");
+			System.out.println("메뉴 선택 : ");
+			int menu = sc.nextInt();
+			sc.nextLine();
 
+			if (menu == 1) {
+				AscCampName();
+			} else if (menu == 2) {
+				DescCampName();
+			} else if (menu == 3) {
+				AscCampArea();
+			} else if (menu == 4) {
+				DescCampArea();
+			} else if (menu == 5) {
+				AscCampPrice();
+			} else if (menu == 6) {
+				DescCampPrice();
+			} else if (menu == 9) {
+				return;
+			} else {
+				System.out.println("잘못 입력했습니다. 다시 입력해주세요.");
+				break;
+			}
+		}
+	}
+
+	public void CampInfoPrint() { // for문으로 캠핑장 리스트 출력하기
+		for (int i = 0; i < camp.size(); i++) {
+			System.out.println(camp.get(i).information());
+		}
+	}
+	
+	public void AscCampName() { // 이름 오름차순 정렬
+		Collections.sort(camp, new AscCampName());
+		CampInfoPrint();
+	}
+
+	public void DescCampName() {
+		Collections.sort(camp, new DescCampName());
+		CampInfoPrint();
+	}
+	
+	public void AscCampArea() { // 지역 오름차순 정렬
+		Collections.sort(camp, new AscCampArea());
+		CampInfoPrint();
+	}
+	
+	public void DescCampArea() {
+		Collections.sort(camp, new DescCampArea());
+		CampInfoPrint();
+	}
+	
+	public void AscCampPrice() { // 가격 오름차순 정렬
+		Collections.sort(camp, new AscCampPrice());
+		CampInfoPrint();
+	}
+	
+	public void DescCampPrice() {
+		Collections.sort(camp, new DescCampPrice());
+		CampInfoPrint();
+	}
 }

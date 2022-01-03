@@ -209,36 +209,17 @@ public class MainMenu {
 			switch (search) {
 			
 			case 1 : 
-				System.out.println("[등록된 캠핑장 목록]");
-				cc.campList();
-				
-				System.out.println("==캠핑장 검색==");
-				System.out.println("키워드 입력 : ");
-				String keyword = sc.nextLine();
-				
-				System.out.println("검색 결과 = ");
-				
+				cc.campSeach();
+				break;
 			case 2 : 
-				System.out.println("===캠핑장 정렬===");
-				System.out.println("1. 지역 오름차순 정렬");
-				System.out.println("2. 지역 내림차순 정렬");
-				System.out.println("3. 제목 오름차순 정렬");
-				System.out.println("4. 제목 내림차순 정렬");
-				System.out.println("5. 가격 오름차순 정렬");
-				System.out.println("6. 가격 내림차순 정렬");
-				System.out.println("9. 이전 메뉴로");
-				System.out.println("메뉴 선택 : ");
-				int campSort = sc.nextInt();
-				sc.nextLine();
-				
+				cc.campSort();
+				break;
 			case 9 : 
 				return;
-				
 			default :
 				System.out.println("잘못 입력했습니다. 다시 입력해주세요.");
 				break;
 			}
 		}
 	}
-
 }
