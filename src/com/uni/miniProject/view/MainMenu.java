@@ -5,8 +5,13 @@ import java.util.Scanner;
 
 import com.uni.miniProject.controller.CampingController;
 import com.uni.miniProject.controller.MemberController;
+<<<<<<< HEAD
+import com.uni.miniProject.controller.TrafsferController;
+import com.uni.miniProject.model.vo.TransferController;
+=======
 import com.uni.miniProject.controller.UserController;
 import com.uni.miniProject.model.vo.CampInfo;
+>>>>>>> refs/remotes/origin/master
 import com.uni.miniProject.model.vo.Write;
 
 public class MainMenu {
@@ -14,6 +19,7 @@ public class MainMenu {
 
 	MemberController mc = new MemberController();
 	CampingController cc = new CampingController();
+	TransferController tc = new TransferController();
 	UserController uc = new UserController();
 	Scanner sc = new Scanner(System.in);
 
@@ -79,6 +85,7 @@ public class MainMenu {
 				campSearch();
 				break;
 			case 3:
+				
 				break;
 			case 4:
 				break;
@@ -158,6 +165,36 @@ public class MainMenu {
 		}
 
 	}
+	
+	public void transferBoard() {
+		while (true) {
+
+			System.out.println("===양도 게시판===");
+			System.out.println("1. 양도하기");
+			System.out.println("2. 양도 글 조회");
+			System.out.println("3. 글 삭제, 수정");
+			System.out.println("9. 이전 메뉴로");
+			int transferMenu = sc.nextInt();
+			sc.nextLine();
+			
+			switch (transferMenu) {
+			
+			case 1:
+				tc.postTransfer();
+				break;
+			case 2:
+				tc.transferList();
+				break;
+			case 3:
+				tc.myTransfer();
+				break;
+			case 9:
+				return;
+			default:
+				System.out.println("잘못 입력했습니다. 다시 입력하세요");
+				break;
+
+=======
 	public void campSearch() {
 		while (true) {
 			System.out.println("===캠핑장 예약===");
