@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 import com.uni.miniProject.controller.CampingController;
 import com.uni.miniProject.controller.MemberController;
+import com.uni.miniProject.controller.UserController;
 import com.uni.miniProject.model.vo.CampInfo;
 import com.uni.miniProject.model.vo.Write;
 
@@ -13,6 +14,7 @@ public class MainMenu {
 
 	MemberController mc = new MemberController();
 	CampingController cc = new CampingController();
+	UserController uc = new UserController();
 	Scanner sc = new Scanner(System.in);
 
 	public MainMenu() {
@@ -20,11 +22,11 @@ public class MainMenu {
 	}
 
 	public void mainMenu() {
-		cc.campRead(); // run에서 이걸 먼저 실행하고 main 실행하면 camp이 자꾸 초기화 된다 왜인지 모를 
+	//	cc.campRead(); // run에서 이걸 먼저 실행하고 main 실행하면 camp이 자꾸 초기화 된다 왜인지 모를 
 		
 		while (true) {
 			System.out.println("1. 로그인 하시겠습니까? ");
-			System.out.println("2. 회원 가입 하시겠습니가? ");
+			System.out.println("2. 회원 가입 하시겠습니까? ");
 			System.out.print("메뉴 입력 : ");
 			int openMenu = sc.nextInt();
 			sc.nextLine();
@@ -34,9 +36,11 @@ public class MainMenu {
 			switch (openMenu) {
 			case 1:
 				ID = "admin";// 유저가 아이디 입력한 값을 ID에 담아주세요
+				//uc.login();
 				out = true;
 				break;
 			case 2:
+				//uc.SignUp();
 				out = true;
 				break;
 			default:
