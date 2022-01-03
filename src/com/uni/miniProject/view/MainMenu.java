@@ -10,13 +10,14 @@ import com.uni.miniProject.model.vo.UserInfo;
 
 public class MainMenu {
 	public static String ID;
-	public static UserInfo USERD;
+
 
 	MemberController mc = new MemberController();
 	CampingController cc = new CampingController();
 	TransferController tc = new TransferController();
 	UserController uc = new UserController();
 	Scanner sc = new Scanner(System.in);
+	
 
 	public MainMenu() {
 		// TODO Auto-generated constructor stub
@@ -24,41 +25,38 @@ public class MainMenu {
 
 	public void mainMenu() {
 		// cc.campRead(); // run에서 이걸 먼저 실행하고 main 실행하면 camp이 자꾸 초기화 된다 왜인지 모를
-
-		while (true) {
+		boolean out = false;
+		while (!out) {
 			System.out.println("1. 로그인 하시겠습니까? ");
 			System.out.println("2. 회원 가입 하시겠습니까? ");
 			System.out.print("메뉴 입력 : ");
 			int openMenu = sc.nextInt();
 			sc.nextLine();
 
-			boolean out = false;// 해당 while문 나가기 위한 장치 -서영
-
 			switch (openMenu) {
 			case 1:
 			//	ID = "admin";// 유저가 아이디 입력한 값을 ID에 담아주세요
-				 
-				USERD = uc.logIn();
-				out = (USERD == null ? false : true);
+				
+				ID = uc.logIn();
+				out = true;
 				break;
 			case 2:
-				USERD = uc.signUp();
-				out = (USERD == null ? false : true);
+				
+				ID = uc.signUp();
+				out = true;
 				break;
 			default:
 				System.out.println("잘못 입력하셨습니다.다시 입력하세요");
 				continue;
 			}
-			if (out) {
-				break; // out이 true면 while문 나감
-			}
+			
 		}
 
 		while (true) {
 
 			System.out.println("====메인 메뉴===");
 
-			if (USERD.getId().equals("admin")) {
+			if (ID.equals("admin")) {
 				System.out.println("0. 관리자 페이지");
 			}
 			System.out.println("1. 마이 페이지");
