@@ -200,28 +200,34 @@ public class CampingController {
 		for(CampInfo c : camp) {
 			
 			if(c.getCampName().equals(res)) {
-				break;
+				
+				int result = payment(res, i);
+				
+				if(result == 0) {
+					System.out.println("현재 포인트가 부족합니다.");
+				}else if(result == 1) {
+					
+					
+					
+					camp.get(i).setReservId(MainMenu.ID);
+				
+				System.out.println(MainMenu.ID+"님이 "+camp.get(i).getCampName()+"을 예약했습니다.");
+				System.out.println("잔여 포인트 : "+ mem.getPoint());
+				System.out.println("조회 밎 취소는 마이페이지에서 하실 수 있습니다.");
+					
+				}
+			
+			
 			}
 			i++;
-		}// 이름이 일치하는 캠핑장 인덱스 추출
-		
-		
-		
-		int result = payment(res, i);
-		
-		if(result == 0) {
-			System.out.println("현재 포인트가 부족합니다.");
-		}else if(result == 1) {
-			
-			
-			
-			camp.get(i).setReservId(MainMenu.ID);
-		
-		System.out.println(MainMenu.ID+"님이 "+camp.get(i).getCampName()+"을 예약했습니다.");
-		System.out.println("잔여 포인트 : "+ mem.getPoint());
-		System.out.println("조회 밎 취소는 마이페이지에서 하실 수 있습니다.");
-			
 		}
+		
+		System.out.println("검색결과와 일치하는 결과가 없습니다. ");
+	
+		
+		
+		
+		
 		
 	}
 	
