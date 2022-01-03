@@ -5,13 +5,9 @@ import java.util.Scanner;
 import com.uni.miniProject.controller.CampingController;
 import com.uni.miniProject.controller.MemberController;
 import com.uni.miniProject.controller.TransferController;
-import com.uni.miniProject.controller.UserController;
 
 import com.uni.miniProject.controller.UserController;
 
-import com.uni.miniProject.model.vo.CampInfo;
-
-import com.uni.miniProject.model.vo.Write;
 
 public class MainMenu {
 	public static String ID;
@@ -30,8 +26,6 @@ public class MainMenu {
 		cc.campRead(); // run에서 이걸 먼저 실행하고 main 실행하면 camp이 자꾸 초기화 된다 왜인지 모를 
 
 		
-		boolean out = false;
-		
 		while (true) {
 
 			System.out.println("1. 로그인 하시겠습니까? ");
@@ -43,16 +37,14 @@ public class MainMenu {
 			switch (openMenu) {
 			case 1:
 				ID = "admin";// 유저가 아이디 입력한 값을 ID에 담아주세요
-				
-			//	ID = "admin";// 유저가 아이디 입력한 값을 ID에 담아주세요
-				
-				ID = uc.logIn();
+
+				uc.login();
 				out = true;
 				break;
 			case 2:
-				uc.signUp();
-				
-				ID = uc.signUp();
+				uc.SignUp();
+
+
 				out = true;
 				break;
 			default:
@@ -223,10 +215,10 @@ public class MainMenu {
 				return;
 			default:
 				System.out.println("잘못 입력했습니다. 다시 입력하세요");
-				break;
-			}
-		}
-	}
+
+				break;}}}
+
+
 
 	public void campSearch() {
 		while (true) {

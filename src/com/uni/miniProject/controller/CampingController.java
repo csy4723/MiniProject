@@ -250,6 +250,30 @@ public class CampingController {
 		
 	}
 	
+
+	public void campSeach() {
+		System.out.println("[등록된 캠핑장 목록]");
+		campList();
+		
+		System.out.println("===캠핑장 검색===");
+		System.out.println("키워드 입력 : ");
+		String keyword = sc.nextLine();
+		
+		camp.contains(keyword);
+//		String search = camp.get(0).get(keyword).toString();
+		
+		System.out.println("검색 결과: ");
+		//SeachKeyword();
+		
+		System.out.println("어느 캠핑장으로 예약하시겠습니까? : ");
+		String res = sc.nextLine();
+		sc.nextLine();
+		
+		reservation(res);
+	}
+ 
+	
+
 	
 	
 	
