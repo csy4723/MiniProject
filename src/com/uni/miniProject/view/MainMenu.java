@@ -1,18 +1,11 @@
 package com.uni.miniProject.view;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 import com.uni.miniProject.controller.CampingController;
 import com.uni.miniProject.controller.MemberController;
-<<<<<<< HEAD
-import com.uni.miniProject.controller.TrafsferController;
-import com.uni.miniProject.model.vo.TransferController;
-=======
+import com.uni.miniProject.controller.TransferController;
 import com.uni.miniProject.controller.UserController;
-import com.uni.miniProject.model.vo.CampInfo;
->>>>>>> refs/remotes/origin/master
-import com.uni.miniProject.model.vo.Write;
 
 public class MainMenu {
 	public static String ID;
