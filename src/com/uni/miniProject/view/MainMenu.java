@@ -192,8 +192,9 @@ public class MainMenu {
 			default:
 				System.out.println("잘못 입력했습니다. 다시 입력하세요");
 				break;
-			}}}
-
+			}
+		}
+	}
 
 	public void campSearch() {
 		while (true) {
