@@ -3,6 +3,7 @@ package com.uni.miniProject.run;
 
 import com.uni.miniProject.controller.CampingController;
 import com.uni.miniProject.controller.UserController;
+import com.uni.miniProject.model.vo.Member;
 import com.uni.miniProject.view.MainMenu;
 
 public class Run { 
@@ -18,8 +19,12 @@ public class Run {
 //		cc.campRead();
 //		cc.campList();
 		mm.mainMenu();
-		uc.SignUp();
-		uc.login();
+//		uc.SignUp();
+//		uc.login();
+		
+
+		
+		
 
 	}
 
