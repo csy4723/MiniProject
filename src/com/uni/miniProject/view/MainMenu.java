@@ -10,12 +10,13 @@ import com.uni.miniProject.controller.TransferController;
 import com.uni.miniProject.controller.UserController;
 
 import com.uni.miniProject.model.vo.CampInfo;
-
+import com.uni.miniProject.model.vo.Member;
 import com.uni.miniProject.model.vo.Write;
 
 public class MainMenu {
 	public static String ID;
 
+	Member m = new Member();
 	MemberController mc = new MemberController();
 	CampingController cc = new CampingController();
 	TransferController tc = new TransferController();
@@ -77,6 +78,7 @@ public class MainMenu {
 				adminPage();
 				break;
 			case 1:
+				myPage();
 				break;
 			case 2:
 				campSearch();
@@ -179,10 +181,10 @@ public class MainMenu {
 
 			switch (mypagemenu) {
 			case 1: // 개인정보 조회
-				uc.toString();
+				uc.serchUser();
 				break;
 			case 2: // 개인정보 수정
-					
+				uc.updateUser();
 				break;	
 			case 3: // 내 예약 조회
 				

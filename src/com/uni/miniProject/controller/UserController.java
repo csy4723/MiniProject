@@ -156,16 +156,15 @@ public class UserController {
 	public void userDelete() {// 회원 탈퇴
 
 		System.out.println("탈퇴할 아이디를 입력해주세요");
-		String id = sc.nextLine();
+		String deleteid = sc.nextLine();
 
-		for (int i = 0; i < user.size(); i++) {
-
-			if (id.equals(user.get(i).getUserId())) {
-				user.remove(i);
-				return;
+		for(Member mem : user) {
+			if(mem.getUserId().equals(deleteid)) {
+				user.remove(mem);
+				break;
 			}
 		}
-		System.out.println("회원정보가 없습니다.");
+		System.out.println("회원탈퇴가 완료되었습니다.");
 
 	}
 
@@ -183,7 +182,7 @@ public class UserController {
 		
 		
 	}
-	/*  코드 개발 진행중
+
 	private boolean idCheck(String id) { // 중복된 아이디 있는지 체크
 		boolean check = true;
 		m = FindbyID(id);
@@ -232,10 +231,11 @@ public class UserController {
 			}else {
 				System.out.println("기존정보 : " + m.info());
 				
+				
 				System.out.println("변경 내용 : ");
 				String update = sc.nextLine();
 				
-				m.updateMember(m, menu, update);
+				m.updateMember(m, menu, update); // 1번 : 비밀번호 , 2번 : 이름 , 3번 : 나이
 				
 				System.out.println("회원정보가 변경되었습니다.");
 			}
@@ -243,7 +243,25 @@ public class UserController {
 			
 		}
 	}
-	*/
+	
+	public void serchUser() { // 개인정보 조회
+		
+		System.out.println("개인정보 조회");
+		System.out.println("============================");
+		System.out.println("아이디를 입력해주세요 : ");
+		String id = sc.nextLine();
+		
+		for(int i=0;i<user.size();i++) {
+			if(id.equals(user.get(i).getUserId())) {
+				System.out.println(user.get(i).getUserId() + " " + user.get(i).getUserPwd() +" " + user.get(i).getName() +" "
+						+ user.get(i).getAge() + " " + user.get(i).getGender() + " " + user.get(i).getEmail() + " " + user.get(i).getPoint());
+					
+			}else {
+				System.out.println("다시확인해주세요");
+			}
+			
+		}
+	}
 	
 
 }
