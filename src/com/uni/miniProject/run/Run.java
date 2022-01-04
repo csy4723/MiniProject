@@ -18,8 +18,8 @@ public class Run {
 //		cc.campRead();
 //		cc.campList();
 		mm.mainMenu();
-		uc.SignUp();
-		uc.login();
+//		uc.SignUp();
+//		uc.login();
 
 	}
 

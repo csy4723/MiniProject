@@ -20,6 +20,12 @@ public class Write {// 글 기본 토대가 되는 클래스, 이거 그대로 �
 		this.date = date;
 		this.userId = userId;
 	}
+	
+		public Write(String title2, String content2, String userId2) {
+			this.title = title2;
+			this.content = content2;
+			this.userId = userId2;
+		}
 
 	public String getTitle() {
 		return title;

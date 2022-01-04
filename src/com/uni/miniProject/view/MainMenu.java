@@ -91,6 +91,7 @@ public class MainMenu {
 			case 4:
 				break;
 			case 5:
+				ReviewBoard();
 				break;
 			case 9:
 				
@@ -232,21 +233,22 @@ public class MainMenu {
 			System.out.println("3. 리뷰 글 정렬");
 			System.out.println("4. 내 글 조회");
 			System.out.println("9. 이전 메뉴로");
+			System.out.println("메뉴 선택 : ");
 			int Menu = sc.nextInt();
 			sc.nextLine();
 			
 			switch (Menu) {
 			case 1:
-				rc.reviewWrite();
+				rc.ReviewWrite();
 				break;
 			case 2:
-				rc.reviewSearch();
+				rc.ReviewSearch();
 				break;
 			case 3:
-				rc.reviewSort();
+				rc.ReviewSort();
 				break;
 			case 4:
-				rc.myReview();
+				rc.MyReview();
 				break;
 			case 9:
 				return;
