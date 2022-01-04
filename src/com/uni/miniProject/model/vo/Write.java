@@ -8,7 +8,7 @@ public class Write {// 글 기본 토대가 되는 클래스, 이거 그대로 �
 	private String content; 
 	private Calendar date;
 	private String userId;
-	
+	 
 	public Write() {
 		// TODO Auto-generated constructor stub
 	}

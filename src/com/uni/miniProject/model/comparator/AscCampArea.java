@@ -10,5 +10,5 @@ public class AscCampArea implements Comparator<CampInfo>{
 	public int compare(CampInfo o1, CampInfo o2) {
 		return o1.getCampArea().compareTo(o2.getCampArea());
 	}
-
+ 
 }

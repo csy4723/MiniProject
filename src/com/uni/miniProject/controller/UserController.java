@@ -30,7 +30,7 @@ public class UserController {
 		String id = "";
 		String pw = "";
 		while (true) {
-
+ 
 			System.out.println("아이디와 비밀번호를 입력하세요 ");
 			System.out.println("아이디 입력 : ");
 			id = sc.nextLine();
