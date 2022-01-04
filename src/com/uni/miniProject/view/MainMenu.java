@@ -251,6 +251,7 @@ public class MainMenu {
 				rc.MyReview();
 				break;
 			case 9:
+				rc.ReviewSave();
 				return;
 			default:
 				System.out.println("잘못 입력했습니다. 다시 입력해주세요.");

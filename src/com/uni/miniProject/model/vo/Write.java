@@ -21,11 +21,6 @@ public class Write {// 글 기본 토대가 되는 클래스, 이거 그대로 �
 		this.userId = userId;
 	}
 	
-		public Write(String title2, String content2, String userId2) {
-			this.title = title2;
-			this.content = content2;
-			this.userId = userId2;
-		}
 
 	public String getTitle() {
 		return title;
@@ -66,6 +61,10 @@ public class Write {// 글 기본 토대가 되는 클래스, 이거 그대로 �
 		return "Write [제목 : " + title + ", 내용 : " + content + ", 작성 날짜 : " + today + ", 작성자 :" + userId + "]";
 	}
 	
-	
+	public String information() {
+		SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
+		String today = sf.format(date.getTime());
+		return "제목: " + title + " /내용: " + content + " /날짜: " + today + " /작성자: " + userId;
+	}
 
 }
