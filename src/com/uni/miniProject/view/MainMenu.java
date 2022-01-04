@@ -31,7 +31,8 @@ public class MainMenu {
 
 		boolean out = false;
 		while (!out) {
-			// cc.campRead(); // run에서 이걸 먼저 실행하고 main 실행하면 camp이 자꾸 초기화 된다 왜인지 모를
+			cc.campRead(); // run에서 이걸 먼저 실행하고 main 실행하면 camp이 자꾸 초기화 된다 왜인지 모를
+			uc.userReadFile();
 			System.out.println("1. 로그인 하시겠습니까? ");
 			System.out.println("2. 회원 가입 하시겠습니까? ");
 			System.out.print("메뉴 입력 : ");
@@ -84,7 +85,7 @@ public class MainMenu {
 				campSearch();
 				break;
 			case 3:
-
+				tc.postTransfer();
 				break;
 			case 4:
 				break;
@@ -93,6 +94,7 @@ public class MainMenu {
 			case 9:
 
 				cc.campWrite();
+				uc.userSaveFile();
 				System.out.println("프로그램이 종료됩니다.");
 				return;
 			default:
@@ -225,7 +227,7 @@ public class MainMenu {
 				tc.transferList();
 				break;
 			case 3:
-				tc.myTransfer();
+		//		tc.myTransfer();
 				break;
 			case 9:
 				return;

@@ -29,7 +29,9 @@ public class UserController {
 		System.out.println("회원 가입");
 		String id = "";
 		String pw = "";
-		while (true) {
+		boolean b = true;
+		
+		while (b) {
 
 			System.out.println("아이디와 비밀번호를 입력하세요 ");
 			System.out.println("아이디 입력 : ");
@@ -37,23 +39,21 @@ public class UserController {
 			System.out.println("비밀번호 입력 : ");
 			pw = sc.nextLine();
 
-			boolean b = false;
 			if (user.size() == 0) { // 담긴 값이 없으면 등록
-				b = true;
-			} else if (user.size() < 0) { // 담긴값이 있으면
-
+				b = false;
+			} else{ // 담긴값이 있으면
 				for (Member u : user) { // user를 반복해 실행
+					
 					if (!u.getUserId().equals(id)) { // 입력받은 id와 가져온 userid가 일치하지않으면 회원 등록
-						b = true;
+						b = false;
 					}
 
 				}
 			}
-			if (b) {
-				break;
+			if(b) {
+				System.out.println("중복된 아이디가 있습니다. 다시입력해주세요");	
 			}
-
-			System.out.println("중복된 아이디가 있습니다. 다시입력해주세요");
+			
 
 		}
 
@@ -118,7 +118,10 @@ public class UserController {
 	public String logIn() {
 		String id = "";
 		String pw = "";
-		while (true) {
+		
+		
+		boolean b = true;
+		while (b) {
 
 			System.out.println("아이디와 비밀번호를 입력하세요 ");
 			System.out.println("아이디 입력 : ");
@@ -126,27 +129,25 @@ public class UserController {
 			System.out.println("비밀번호 입력 : ");
 			pw = sc.nextLine();
 
-			boolean b = false;
 			if (user.size() == 0) { // 담긴값이 없을경우
 				System.out.println("등록된 아이디가 없습니다");
 				b = false;
-			} else if (user.size() < 0) { //
-
+			} else { //
 				for (Member u : user) {
 					if (!u.getUserId().equals(id) || !u.getUserPwd().equals(pw)) {
-						b = false;
+						b = true;
 					} else if (u.getUserId().equals(id) && u.getUserPwd().equals(pw)) {
 						System.out.println(id + "님 로그인 되었습니다.");
-						b = true;
+						b = false;
 					}
 
 				}
 			}
 			if (b) {
-				break;
+				
+				System.out.println("아이디 혹은 비밀번호를 다시확인해 주세요");
 			}
 
-			System.out.println("아이디 혹은 비밀번호를 다시확인해 주세요");
 
 		}
 
@@ -261,6 +262,77 @@ public class UserController {
 			}
 			
 		}
+	
+	}
+	
+	
+	public void userSaveFile() {// 종료할때 저장하는 메소드
+		
+	File ex = new File("User list");
+	
+	if(ex.exists()) {
+		
+	boolean b =	ex.delete();
+	System.out.println(b);// 지워졌는지 확인
+	}
+	
+	File f = new File("User list.txt");
+	
+	try(BufferedWriter bw = new BufferedWriter(new FileWriter(f.getName()))){
+
+		for(int i = 0; i< user.size(); i++) {
+			bw.write(user.get(i).toString());///주소값이 저장됨
+			bw.newLine();
+		}
+		
+		
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	
+	}
+	
+	
+	public void userReadFile() {
+		
+		File f = new File("User list.txt");
+		ArrayList tem = null;
+				
+				try(BufferedReader br = new BufferedReader(new FileReader(f.getName()))) {
+					
+					String temp = null;
+					while((temp = br.readLine()) != null) {
+						
+						String[] arr = temp.split(",");
+						
+						String id = arr[0];
+						String pwd = arr[1];
+						String name = arr[2];
+						int age = Integer.valueOf(arr[3]);
+						char gender = arr[4].charAt(0);
+						String email = arr[5];
+						int point = Integer.valueOf(arr[6]);
+						
+						Member m = new Member(id, pwd, name, age, gender, email, point);
+						
+						user.add(m);
+						
+				
+					}
+					
+					
+				} catch (FileNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}catch(EOFException e){
+				
+	}catch (IOException e) {
+					// TODO Auto-generated catch block
+					
+				}
+		
+		
 	}
 	
 

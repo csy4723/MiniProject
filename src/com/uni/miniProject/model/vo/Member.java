@@ -92,6 +92,16 @@ public class Member {
 	public void setPoint(int point) {
 		this.point = point;
 	}
+	
+	
+	
+	
+
+	@Override
+	public String toString() {
+		
+		return userId+","+userPwd+","+name+","+age+","+gender+","+email+","+point;
+	}
 
 	public String info() {
 		return "아이디 :" +userId +"\n패스워드 : "+userPwd +"\n"+name+" 회원님의 정보\n 나이 : "+age+"\n성별 : "+gender+

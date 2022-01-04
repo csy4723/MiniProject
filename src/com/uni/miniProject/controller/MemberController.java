@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Scanner;
 
+import com.uni.miniProject.model.vo.CampInfo;
 import com.uni.miniProject.model.vo.Write;
 import com.uni.miniProject.view.MainMenu;
 
@@ -12,6 +13,7 @@ public class MemberController {
 	Write wr = new Write();
 	ArrayList<Write> notic = new ArrayList<Write>();// 공지사항 담을 리스트
 	CampingController cc = new CampingController();
+	TransferController tc = new TransferController();
 	
 	{ 
 		notic.add(new Write("화재 조심", "겨울이라 건조하니 화재조심합시다", cc.setCalendar(2021, 0, 12), "admin"));
@@ -70,7 +72,13 @@ public class MemberController {
 	
 	
 	public void everyWrite() {
-		// 리뷰글, 양도글, 자유게시판 다 불러와서 for문으로 출력하기 
+
+		System.out.println("===양도글===");
+		for(CampInfo c :tc.transferCamp) {
+			System.out.println(c.information());
+		}
+		
+		
 		
 		
 		
