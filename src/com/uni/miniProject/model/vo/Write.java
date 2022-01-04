@@ -64,7 +64,13 @@ public class Write {// 글 기본 토대가 되는 클래스, 이거 그대로 �
 	public String information() {
 		SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
 		String today = sf.format(date.getTime());
-		return "제목: " + title + " /내용: " + content + " /날짜: " + today + " /작성자: " + userId;
+		return "제목: " + title + " ||내용: " + content + " ||날짜: " + today + " ||작성자: " + userId;
+	}
+	
+	public String toStrFile() {
+		SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
+		String today = sf.format(date.getTime());
+		return title + "," + content + "," + today + "," + userId ;
 	}
 
 }

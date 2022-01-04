@@ -1,0 +1,14 @@
+package com.uni.miniProject.model.comparator;
+
+import java.util.Comparator;
+
+import com.uni.miniProject.model.vo.Write;
+
+public class AscReviewTitle implements Comparator<Write>{
+
+	@Override
+	public int compare(Write o1, Write o2) {
+		return o1.getTitle().compareTo(o2.getTitle());
+	}
+	
+}

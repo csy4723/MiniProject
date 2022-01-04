@@ -19,7 +19,6 @@ public class MainMenu {
 	Scanner sc = new Scanner(System.in);
 
 	public MainMenu() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public void mainMenu() {
@@ -27,7 +26,7 @@ public class MainMenu {
 		
 		
 		cc.campRead(); // run에서 이걸 먼저 실행하고 main 실행하면 camp이 자꾸 초기화 된다 왜인지 모를 
-
+		rc.ReviewRead();
 	
 
 		
@@ -38,7 +37,7 @@ public class MainMenu {
 			int openMenu = sc.nextInt();
 			sc.nextLine();
 
-			boolean out = false;// 해당 while문 나가기 위한 장치 -서영
+			boolean out = false; // 해당 while문 나가기 위한 장치 -서영
 
 			switch (openMenu) {
 			case 1:
@@ -94,7 +93,7 @@ public class MainMenu {
 				ReviewBoard();
 				break;
 			case 9:
-				
+				rc.ReviewSave();
 				cc.campWrite();
 				System.out.println("프로그램이 종료됩니다.");
 				return;
@@ -205,13 +204,11 @@ public class MainMenu {
 			System.out.println("1. 캠핑장 검색");
 			System.out.println("2. 캠핑장 정렬");
 			System.out.println("9. 이전 메뉴로");
-			
 			System.out.println("메뉴 선택 : ");
 			int search = sc.nextInt();
 			sc.nextLine();
 			
 			switch (search) {
-			
 			case 1 : 
 				cc.campSearch();
 				break;
@@ -225,7 +222,9 @@ public class MainMenu {
 				break;
 			}
 		}
-	}public void ReviewBoard() {
+	}
+	
+	public void ReviewBoard() {
 		while (true) {
 			System.out.println("===리뷰 게시판===");
 			System.out.println("1. 리뷰 글 쓰기");
@@ -251,7 +250,6 @@ public class MainMenu {
 				rc.MyReview();
 				break;
 			case 9:
-				rc.ReviewSave();
 				return;
 			default:
 				System.out.println("잘못 입력했습니다. 다시 입력해주세요.");
