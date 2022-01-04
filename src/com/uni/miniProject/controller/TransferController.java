@@ -34,7 +34,7 @@ public class TransferController {
 	public void postTransfer() { // 양도글 등록 메소드
 		System.out.println("제목 : ");
 		String title = sc.nextLine();
-
+ 
 		System.out.println("내용 : ");
 		String content = sc.nextLine();
 

@@ -6,7 +6,7 @@ public class ReviewController {
 	Scanner sc = new Scanner(System.in);
 
 	public void reviewWrite() {
-		
+		 
 	}
 
 	public void reviewSearch() {

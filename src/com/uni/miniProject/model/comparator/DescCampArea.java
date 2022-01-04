@@ -10,3 +10,4 @@ public class DescCampArea implements Comparator<CampInfo>{
 		return o2.getCampArea().compareTo(o1.getCampArea());
 	}
 }
+ 
