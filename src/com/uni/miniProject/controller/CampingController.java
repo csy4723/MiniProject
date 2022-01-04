@@ -290,7 +290,11 @@ public class CampingController {
 
 		for(int i = 0; i < camp.size(); i++) {
 			if(camp.get(i).getCampArea().equals(keyword)) {
-				System.out.println(camp.get(i).information());
+				
+				if(!camp.get(i).getReservId().isBlank()||!camp.get(i).isState()) {
+					System.out.println(camp.get(i).information());
+				}
+				
 			}
 		}
 		
@@ -369,5 +373,17 @@ public class CampingController {
 	public void DescCampPrice() {
 		Collections.sort(camp, new DescCampPrice());
 		CampInfoPrint();
+	}
+	
+	public void reserveCheck() {
+		System.out.println("예약한 아이디 입력 : ");
+		String reserveid = sc.nextLine();
+		
+		for(int i=0; i< camp.size();i++) {
+			if(reserveid.equals(camp.get(i).getReservId())) {
+				System.out.println(camp.get(i).getCampName() +" 캠핑장의 위치는 "+ camp.get(i).getCampArea() + "이고 가격은 " + camp.get(i).getCampPrice() + "원이다. (날짜 : "
+						+ camp.get(i).getCampDay() + ")");
+			}
+		}
 	}
 }

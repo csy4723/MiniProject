@@ -3,6 +3,7 @@ package com.uni.miniProject.view;
 import java.util.Scanner;
 
 import com.uni.miniProject.controller.CampingController;
+import com.uni.miniProject.controller.FreeBoardController;
 import com.uni.miniProject.controller.MemberController;
 
 import com.uni.miniProject.controller.TransferController;
@@ -20,6 +21,7 @@ public class MainMenu {
 	MemberController mc = new MemberController();
 	CampingController cc = new CampingController();
 	TransferController tc = new TransferController();
+	FreeBoardController fc = new FreeBoardController();
 	UserController uc = new UserController();
 	Scanner sc = new Scanner(System.in);
 
@@ -33,6 +35,9 @@ public class MainMenu {
 		while (!out) {
 			cc.campRead(); // run에서 이걸 먼저 실행하고 main 실행하면 camp이 자꾸 초기화 된다 왜인지 모를
 			uc.userReadFile();
+			tc.tCampRead();
+			fc.freeBoardRead();
+			
 			System.out.println("1. 로그인 하시겠습니까? ");
 			System.out.println("2. 회원 가입 하시겠습니까? ");
 			System.out.print("메뉴 입력 : ");
@@ -85,15 +90,18 @@ public class MainMenu {
 				campSearch();
 				break;
 			case 3:
-				tc.postTransfer();
+				transferBoard();
 				break;
 			case 4:
+				freeBoard();
 				break;
 			case 5:
 				break;
 			case 9:
 
 				cc.campWrite();
+				tc.tCampWrite();
+				fc.freeBoardWrite();
 				uc.userSaveFile();
 				System.out.println("프로그램이 종료됩니다.");
 				return;
@@ -189,13 +197,15 @@ public class MainMenu {
 				uc.updateUser();
 				break;	
 			case 3: // 내 예약 조회
-				
+				cc.reserveCheck();
 				break;
 			case 4: // 포인트 충전
 				uc.pointCharge();
 				break;
 			case 5: // 회원 탈퇴
 				uc.userDelete();
+				uc.userSaveFile();
+				System.exit(0);
 				break;
 			case 9: // 이전메뉴로
 				return;
@@ -211,9 +221,9 @@ public class MainMenu {
 		while (true) {
 
 			System.out.println("===양도 게시판===");
-			System.out.println("1. 양도하기");
-			System.out.println("2. 양도 글 조회");
-			System.out.println("3. 글 삭제, 수정");
+			System.out.println("1. 양도 하기");
+			System.out.println("2. 양도 받기");
+			System.out.println("3. 내 양도 조회(삭제,수정)");
 			System.out.println("9. 이전 메뉴로");
 			int transferMenu = sc.nextInt();
 			sc.nextLine();
@@ -224,10 +234,46 @@ public class MainMenu {
 				tc.postTransfer();
 				break;
 			case 2:
-				tc.transferList();
+				tc.getTransfer();
 				break;
 			case 3:
-		//		tc.myTransfer();
+				tc.myTransfer();
+				break;
+			case 9:
+				return;
+			default:
+				System.out.println("잘못 입력했습니다. 다시 입력하세요");
+				break;
+			}
+		}
+	}
+	
+	public void freeBoard() {
+		while (true) {
+
+			System.out.println("===자유 게시판===");
+			System.out.println("1. 검색하기");
+			System.out.println("2. 정렬하기");
+			System.out.println("3. 내 글 조회");
+			System.out.println("4. 글 작성");
+			System.out.println("9. 이전 메뉴로");
+			fc.allFree();
+			int freeMenu = sc.nextInt();
+			sc.nextLine();
+			
+			switch (freeMenu) {
+
+			case 1:
+				fc.searchFree();
+				break;
+			case 2:
+				fc.freeSort();
+				break;
+			case 3:
+				fc.myFree();
+				break;
+			case 4:
+				fc.postFree();
 				break;
 			case 9:
 				return;
@@ -252,27 +298,9 @@ public class MainMenu {
 			switch (search) {
 
 			case 1:
-				System.out.println("[등록된 캠핑장 목록]");
-				cc.campList();
-
-				System.out.println("==캠핑장 검색==");
-				System.out.println("키워드 입력 : ");
-				String keyword = sc.nextLine();
-
-				System.out.println("검색 결과 = ");
-
+				cc.campSearch();
 			case 2:
-				System.out.println("===캠핑장 정렬===");
-				System.out.println("1. 지역 오름차순 정렬");
-				System.out.println("2. 지역 내림차순 정렬");
-				System.out.println("3. 제목 오름차순 정렬");
-				System.out.println("4. 제목 내림차순 정렬");
-				System.out.println("5. 가격 오름차순 정렬");
-				System.out.println("6. 가격 내림차순 정렬");
-				System.out.println("9. 이전 메뉴로");
-				System.out.println("메뉴 선택 : ");
-				int campSort = sc.nextInt();
-				sc.nextLine();
+				cc.campSort();
 
 			case 9:
 				return;

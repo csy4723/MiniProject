@@ -115,7 +115,7 @@ public class CampInfo implements Cloneable{
 				+ date +"," +reservId;
 	}
 	
-	public String toStrtrans() { // 파일로 입출력할 때 사용
+	public String toStrtrans() { // 양도 입출력
 		SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
 		String date = sf.format(campDay.getTime());
 		return campName + "," + campArea + "," + campPrice + ","

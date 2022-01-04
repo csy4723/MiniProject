@@ -1,1 +1,2 @@
 csy4723,tjdud,최서영,20,f,csy4723,0
+admin,tjdud,최서영,12,f,clkj,0
