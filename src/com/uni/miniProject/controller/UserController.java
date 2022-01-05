@@ -30,57 +30,86 @@ public class UserController {
 		System.out.println("회원 가입");
 		String id = "";
 		String pw = "";
-
 		boolean b = true;
 
 		while (b) {
 
-			
+			System.out.println("아이디와 비밀번호를 입력하세요 ");
+			System.out.println("아이디 입력 : ");
+			id = sc.nextLine();
+			System.out.println("비밀번호 입력 : ");
+			pw = sc.nextLine();
 
-				System.out.println("아이디와 비밀번호를 입력하세요 ");
-				System.out.println("아이디 입력 : ");
-				id = sc.nextLine();
-				System.out.println("비밀번호 입력 : ");
-				pw = sc.nextLine();
+			if (user.size() == 0) { // 담긴 값이 없으면 등록
+				b = false;
+			} else { // 담긴값이 있으면
+				for (Member u : user) { // user를 반복해 실행
 
-				if (user.size() == 0) { // 담긴 값이 없으면 등록
-					b = false;
-				} else { // 담긴값이 있으면
-					for (Member u : user) { // user를 반복해 실행
-
-						if (!u.getUserId().equals(id)) { // 입력받은 id와 가져온 userid가 일치하지않으면 회원 등록
-							b = false;
-						}
-
+					if (!u.getUserId().equals(id)) { // 입력받은 id와 가져온 userid가 일치하지않으면 회원 등록
+						b = false;
 					}
-				}
-				if (b) {
-					System.out.println("중복된 아이디가 있습니다. 다시입력해주세요");
-				}
 
+				}
+			}
+			if (b) {
+				System.out.println("중복된 아이디가 있습니다. 다시입력해주세요");
 			}
 
-			System.out.println("이름을 입력하세요 : ");
-			String name = sc.nextLine();
-			System.out.println("나이를 입력하세요 : ");
-			int age = sc.nextInt();
-			sc.nextLine();
-			System.out.println("성별을 입력하세요 :(m/f)");
-			char gender = sc.nextLine().charAt(0);
-
-			System.out.println("이메일을 입력하세요 : ");
-			String email = sc.nextLine();
-
-			System.out.println("회원가입이 완료 되었습니다 " + id + "님 환영합니다.");
-
-			Member m = new Member(id, pw, name, age, gender, email);
-
-			user.add(m);
-
-			return id;
-
 		}
-	
+
+		System.out.println("이름을 입력하세요 : ");
+		String name = sc.nextLine();
+		System.out.println("나이를 입력하세요 : ");
+		int age = sc.nextInt();
+		sc.nextLine();
+		System.out.println("성별을 입력하세요 :(m/f)");
+		char gender = sc.nextLine().charAt(0);
+
+		System.out.println("이메일을 입력하세요 : ");
+		String email = sc.nextLine();
+
+		System.out.println("회원가입이 완료 되었습니다 " + id + "님 환영합니다.");
+
+		Member m = new Member(id, pw, name, age, gender, email);
+
+		user.add(m);
+
+		return id;
+
+		/*
+		 * if (idCheck(id)) { System.out.println("사용중인 ID입니다."); return null; } else {
+		 * System.out.println(id + "님 환영합니다."); u = new UserInfo(id, pw); user.add(u);//
+		 * 회원목록 리스트에 담기
+		 * 
+		 * return u; }
+		 */
+
+	}
+
+//	public UserInfo logIn() { // 로그인
+//
+//		System.out.println("아이디와 비밀번호를 입력해주세요");
+//		System.out.println("ID 입력 : ");
+//		String id = sc.nextLine();
+//
+//		System.out.println("PW 입력 : ");
+//		String pw = sc.nextLine();
+//
+//		u = FindbyID(id);
+//		if (u == null) {
+//			System.out.println("등록되지않은 아이디입니다");
+//			
+//			return null;
+//		} else if (u.getPw().equals(pw)) {
+//			System.out.println(u.getId() + " 님 로그인 되었습니다.");
+//			
+//			return u;
+//		} else {
+//			System.out.println("아이디 혹은 비밀번호를 다시 확인해주세요");
+//			return null;
+//		}
+//		
+//	}
 
 	public String logIn() {
 		String id = "";
@@ -103,28 +132,26 @@ public class UserController {
 
 				for (Member u : user) {
 
-					if (!u.getUserId().equals(id) || !u.getUserPwd().equals(pw)) {
-						b = false;
-					} else if (u.getUserId().equals(id) && u.getUserPwd().equals(pw)) {
-						System.out.println(id + "님 로그인 되었습니다.");
-						b = true;
-						break;
-					}
+		               if (!u.getUserId().equals(id) || !u.getUserPwd().equals(pw)) {
+		                  b = false;
+		               } else if (u.getUserId().equals(id) && u.getUserPwd().equals(pw)) {
+		                  System.out.println(id + "님 로그인 되었습니다.");
+		                  b = true;
+		                  break;
+		               }
+		            }
+		         }
 
-				}
+		         if (b) {
+		            break;
+		         }
+		         System.out.println("아이디 혹은 비밀번호를 다시확인해 주세요");
+		         return "";
+		      }
+		      return id;
+		   }
 
-			}
-
-			if (b) {
-				break;
-			}
-			System.out.println("아이디 혹은 비밀번호를 다시확인해 주세요");
-			return "";
-		}
-
-		return id;
-
-	}
+	
 
 	public void userDelete() {// 회원 탈퇴
 
@@ -226,15 +253,15 @@ public class UserController {
 		System.out.println("============================");
 //		System.out.println("아이디를 입력해주세요 : ");
 //		String id = sc.nextLine();
-		int i = 0;
-		for (Member m : user) {
-
-			if (m.getUserId().equals(MainMenu.ID)) {
+		int i = 0; 
+		for(Member m : user) {
+			
+			if(m.getUserId().equals(MainMenu.ID)) {
 				break;
 			}
 			i++;
 		}
-
+		
 		System.out.println(user.get(i).information());
 
 //		for (int i = 0; i < user.size(); i++) {

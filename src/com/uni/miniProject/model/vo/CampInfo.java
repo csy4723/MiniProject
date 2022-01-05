@@ -47,15 +47,6 @@ public class CampInfo implements Cloneable{
 		this.state = state;
 	}
 
-	public CampInfo(String campName, String campArea, int campPrice, Calendar campDay, String reservId, boolean state) {// 실행 read용
-		super();
-		this.campName = campName;
-		this.campArea = campArea;
-		this.campPrice = campPrice;
-		this.campDay = campDay;
-		this.reservId = reservId;
-		this.state = state;
-	}
 
 	public String getCampName() {
 		return campName;
@@ -121,23 +112,7 @@ public class CampInfo implements Cloneable{
 		SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
 		String date = sf.format(campDay.getTime());
 		return campName + "," + campArea + "," + campPrice + ","
-				+ date +"," +reservId ;
-	}
-
-	public String toStrtrans() { // 양도 입출력
-		SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
-		String date = sf.format(campDay.getTime());
-		return campName + "," + campArea + "," + campPrice + ","
-				+ date +"," +reservId+","+state;
-	}
-
-	
-	@Override
-	public CampInfo clone() throws CloneNotSupportedException {
-		CampInfo newCamp = (CampInfo) super.clone();
-		
-		
-		return newCamp;
+				+ date +"," +reservId;
 	}
 	
 	public String toStrtrans() { // 양도 입출력
@@ -154,8 +129,6 @@ public class CampInfo implements Cloneable{
 		
 		return newCamp;
 	}
-	
-	
 	
 	
 	

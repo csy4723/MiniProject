@@ -17,7 +17,7 @@ import com.uni.miniProject.view.MainMenu;
 public class TransferController {
 	Scanner sc = new Scanner(System.in);
 
-	ArrayList<CampInfo> transferCamp = new ArrayList<CampInfo>(); // 전체 양도 글들을 담을 목록
+	static ArrayList<CampInfo> transferCamp = new ArrayList<CampInfo>(); // 전체 양도 글들을 담을 목록
 	ArrayList<CampInfo> loginTransferCamp = new ArrayList<CampInfo>(); // 로그인된 아이디의 양도글 목록
 
 	public TransferController() {
@@ -262,30 +262,30 @@ public class TransferController {
 
 	}
 
-//	public void logTCInputId(String campName, String id) {
-//		for (int i = 0; i < loginTransferCamp.size(); i++) {
-//			if (loginTransferCamp.get(i).getCampName().equals(campName)) {
-//				loginTransferCamp.get(i).setReservId(id);// 내 양도글에 아이디 담기
-//			}
-//		}
-//	}
-//
-//	public void tSCInputId(String campName, String id) {
-//		for (int i = 0; i < transferCamp.size(); i++) {
-//			if (transferCamp.get(i).getCampName().equals(campName)) {
-//				transferCamp.get(i).setReservId(id);// 전체 양도글에 아이디 담기
-//			}
-//		}
-//	}
-//
-//	public void ccInputId(String campName, String id) {
-//		for (int i = 0; i < CampingController.camp.size(); i++) {
-//			if (CampingController.camp.get(i).getCampName().equals(campName)) {
-//				CampingController.camp.get(i).setReservId(id);// 전체 캠핑 리스트에 아이디 담기
-//			}
-//
-//		}
-//	}
+	public void logTCInputId(String campName, String id) {
+		for (int i = 0; i < loginTransferCamp.size(); i++) {
+			if (loginTransferCamp.get(i).getCampName().equals(campName)) {
+				loginTransferCamp.get(i).setReservId(id);// 내 양도글에 아이디 담기
+			}
+		}
+	}
+
+	public void tSCInputId(String campName, String id) {
+		for (int i = 0; i < transferCamp.size(); i++) {
+			if (transferCamp.get(i).getCampName().equals(campName)) {
+				transferCamp.get(i).setReservId(id);// 전체 양도글에 아이디 담기
+			}
+		}
+	}
+
+	public void ccInputId(String campName, String id) {
+		for (int i = 0; i < CampingController.camp.size(); i++) {
+			if (CampingController.camp.get(i).getCampName().equals(campName)) {
+				CampingController.camp.get(i).setReservId(id);// 전체 캠핑 리스트에 아이디 담기
+			}
+
+		}
+	}
 
 	public void tCampRead() {
 

@@ -24,7 +24,7 @@ public class FreeBoardController {
 	Scanner sc = new Scanner(System.in);
 
 	Write wr = new Write();
-	ArrayList<Write> freeBoard = new ArrayList<Write>();// 자유게시판 전체 글들을 담을 리스트
+	static ArrayList<Write> freeBoard = new ArrayList<Write>();// 자유게시판 전체 글들을 담을 리스트
 	ArrayList<Write> myFree = new ArrayList<Write>();// 로그인된 아이디의 글들만 담을 리스트
 
 	
@@ -39,7 +39,6 @@ public class FreeBoardController {
 				System.out.println("1. 제목검색");
 				System.out.println("2. 내용검색");
 				System.out.println("3. 제목|내용 통합검색");
-				System.out.println("4. 아이디 검색");
 				System.out.println("9. 이전 메뉴로");
 				int num = sc.nextInt();
 				sc.nextLine();
@@ -70,13 +69,6 @@ public class FreeBoardController {
 					for (int i = 0; i < freeBoard.size(); i++) {
 						if (freeBoard.get(i).getTitle().contains(keyword)//통합검색
 								|| freeBoard.get(i).getContent().contains(keyword)) {
-							temp.add(freeBoard.get(i));
-						}
-					}
-					break;
-				case 4:
-					for (int i = 0; i < freeBoard.size(); i++) {
-						if (freeBoard.get(i).getUserId().contains(keyword)) {//아이디검색
 							temp.add(freeBoard.get(i));
 						}
 					}

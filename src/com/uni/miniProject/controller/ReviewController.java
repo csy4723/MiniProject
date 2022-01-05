@@ -27,12 +27,7 @@ public class ReviewController {
 	static ArrayList<Write> rWrite = new ArrayList<Write>();
 	CampingController cc = new CampingController();
 
-
 	public ReviewController() {
-
-	public void reviewWrite() {
-		 
-
 	}
 
 	public void ReviewList() {
