@@ -262,30 +262,7 @@ public class TransferController {
 
 	}
 
-	public void logTCInputId(String campName, String id) {
-		for (int i = 0; i < loginTransferCamp.size(); i++) {
-			if (loginTransferCamp.get(i).getCampName().equals(campName)) {
-				loginTransferCamp.get(i).setReservId(id);// 내 양도글에 아이디 담기
-			}
-		}
-	}
-
-	public void tSCInputId(String campName, String id) {
-		for (int i = 0; i < transferCamp.size(); i++) {
-			if (transferCamp.get(i).getCampName().equals(campName)) {
-				transferCamp.get(i).setReservId(id);// 전체 양도글에 아이디 담기
-			}
-		}
-	}
-
-	public void ccInputId(String campName, String id) {
-		for (int i = 0; i < CampingController.camp.size(); i++) {
-			if (CampingController.camp.get(i).getCampName().equals(campName)) {
-				CampingController.camp.get(i).setReservId(id);// 전체 캠핑 리스트에 아이디 담기
-			}
-
-		}
-	}
+	
 
 	public void tCampRead() {
 
