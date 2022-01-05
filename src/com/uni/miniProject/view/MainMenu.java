@@ -51,7 +51,7 @@ public class MainMenu {
 				
 
 				ID = uc.logIn();
-				out = true;
+				out = ID == ""? false : true;
 				break;
 			case 2:
 				ID = uc.signUp();
