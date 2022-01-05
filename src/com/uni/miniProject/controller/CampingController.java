@@ -25,7 +25,7 @@ import com.uni.miniProject.model.vo.Member;
 import com.uni.miniProject.view.MainMenu;
 
 public class CampingController {
-	ArrayList<CampInfo> camp = new ArrayList<CampInfo>();// 캠핑 예약 상품 담을 리스트
+	static ArrayList<CampInfo> camp = new ArrayList<CampInfo>();// 캠핑 예약 상품 담을 리스트
 	Scanner sc = new Scanner(System.in);
 	CampInfo cinfo = new CampInfo();
 	FileOutputStream fos = null;
