@@ -30,7 +30,7 @@ public class CampingController {
 	CampInfo cinfo = new CampInfo();
 	FileOutputStream fos = null;
 	Member mem = new Member();
-	
+	UserController u = new UserController();
 
 	public CampingController() {
 		// TODO Auto-generated constructor stub
@@ -47,7 +47,7 @@ public class CampingController {
 		System.out.println("가격 : ");
 		int price = sc.nextInt();
 		sc.nextLine();
- 
+
 		System.out.println("이용 날짜(yyyy-MM-dd) : ");
 		String date = sc.nextLine();
 		String[] dArr = date.split("-");
@@ -62,20 +62,18 @@ public class CampingController {
 		cinfo = new CampInfo(Name, Area, price, cDate);
 
 		camp.add(cinfo);// 여기까지 ArrayList에 캠핑목록 담는 거
-		
-		
 
 	}
 
 	public void campList() {
-	
-		for(int i = 0; i<camp.size(); i++) {
-			if(camp.get(i).getReservId().isBlank()) {
-				
+
+		for (int i = 0; i < camp.size(); i++) {
+			
+
 				System.out.println(camp.get(i).information());
-			}
+			
 		}
-		
+
 	}
 
 	public void campDelete() {
@@ -105,14 +103,13 @@ public class CampingController {
 			while ((temp = br.readLine()) != null) {
 
 				String[] arr = temp.split(",");
-				
 
 				String name = arr[0];
 				String area = arr[1];
 				int price = Integer.valueOf(arr[2]);
 
 				String[] arr2 = arr[3].split("-");
-				
+
 				String reservId = arr[4];
 
 				int year = Integer.valueOf(arr2[0]);
@@ -120,61 +117,52 @@ public class CampingController {
 				int day = Integer.valueOf(arr2[2]);
 
 				CampInfo c = new CampInfo(name, area, price, setCalendar(year, month, day), reservId);
-				
+
 				camp.add(c);
 
 			}
 
 		} catch (FileNotFoundException e) {
-			
-		}catch(EOFException e) {
-			
-		}
-		catch (IOException e) {
+
+		} catch (EOFException e) {
+
+		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
-		
-		
-		
 	}
-	
-	
-	
-	public void campWrite() {// 프로그램 종료할때 저장하는 거 
-		
+
+	public void campWrite() {// 프로그램 종료할때 저장하는 거
+
 		File folder = new File("C:\\Camping List");
-		
-		if(!folder.exists()) {
+
+		if (!folder.exists()) {
 			folder.mkdir();
-		}/// 없어도 될듯?
-		
+		} /// 없어도 될듯?
+
 		File ex = new File(folder, "Camping List.txt");
-		
-		if(ex.exists()) {
+
+		if (ex.exists()) {
 			ex.delete();
 		}
-		
-		
+
 		File f = new File("camping List.txt");
-		
-	try(BufferedWriter bw = new BufferedWriter(new FileWriter(f.getName()))){
-		
-		for(int i = 0; i < camp.size(); i++) {
-			
-			bw.write(camp.get(i).toString());
-			bw.newLine();
-			
+
+		try (BufferedWriter bw = new BufferedWriter(new FileWriter(f.getName()))) {
+
+			for (int i = 0; i < camp.size(); i++) {
+
+				bw.write(camp.get(i).toString());
+				bw.newLine();
+
+			}
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		
-		
-	} catch (IOException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
-	
-		
+
 	}
 
 	public Calendar setCalendar(int year, int month, int day) {
@@ -184,119 +172,133 @@ public class CampingController {
 
 		return cal;
 	}
-	
-	
-	public void reservation(String res) {//예약 메소드->검색메소드에서 해당 캠핑장 인덱스 넘겨받아야 됨
-		
-		
+
+	public void reservation(String res) {// 예약 메소드->검색메소드에서 해당 캠핑장 인덱스 넘겨받아야 됨
+
 		System.out.println("예약하시겠습니까? (y/n)");
 		String yn = sc.nextLine();
-		
-		if(yn.equalsIgnoreCase("N")) {
+
+		if (yn.equalsIgnoreCase("N")) {
 			return;
 		}
-		
+
 		int i = 0;
-		for(CampInfo c : camp) {
-			
-			if(c.getCampName().equals(res)) {
-				
+		for (CampInfo c : camp) {
+
+			if (c.getCampName().equals(res)) {
+
 				int result = payment(res, i);
-				
-				if(result == 0) {
+
+				if (result == 0) {
 					System.out.println("현재 포인트가 부족합니다.");
-				}else if(result == 1) {
-					
-					
-					
+				} else if (result == 1) {
+
 					camp.get(i).setReservId(MainMenu.ID);
-				
-				System.out.println(MainMenu.ID+"님이 "+camp.get(i).getCampName()+"을 예약했습니다.");
-				System.out.println("잔여 포인트 : "+ mem.getPoint());
-				System.out.println("조회 밎 취소는 마이페이지에서 하실 수 있습니다.");
-					
+
+					int j = 0;
+					for (Member u : UserController.user) {
+
+						if (UserController.user.get(j).getUserId().equals(MainMenu.ID)) {
+							break;
+						}
+						j++;
+					}
+
+					System.out.println(MainMenu.ID + "님이 " + camp.get(i).getCampName() + "을 예약했습니다.");
+					System.out.println("잔여 포인트 : " + UserController.user.get(j).getPoint());
+					System.out.println("조회 밎 취소는 마이페이지에서 하실 수 있습니다.");
+					return;
+
 				}
-			
-			
+
 			}
 			i++;
 		}
-		
+
 		System.out.println("검색결과와 일치하는 결과가 없습니다. ");
-	
-		
-		
-		
-		
-		
+
 	}
-	
-	private int payment(String res, int num) {// 포인트 결제 
-		
-		int cP= camp.get(num).getCampPrice();
-		int mP = mem.getPoint(); // 현재 회원의 포인트 
-		
-		int result = 0;
-		if(mP < cP) {
-			result =  0;
-		}else if(mP >= cP) {
-		 result = 1; 
-		 mem.setPoint(mP - cP); 
+
+	private int payment(String res, int num) {// 포인트 결제
+
+		int i = 0;
+		for (Member u : UserController.user) {
+
+			if (UserController.user.get(i).getUserId().equals(MainMenu.ID)) {
+				break;
+			}
+			i++;
 		}
-		
+
+		int cP = camp.get(num).getCampPrice();
+		int mP = UserController.user.get(i).getPoint();// 현재 회원의 포인트
+
+		System.out.println(cP + " " + mP);
+
+		int result = 0;
+		if (mP < cP) {
+			result = 0;
+		} else if (mP >= cP) {
+			result = 1;
+
+			UserController.user.get(i).setPoint(mP - cP);
+			System.out.println(UserController.user.get(i).getPoint());
+		}
+
 		return result;
 	}
 
 	public void cancleReserv() {
 		System.out.println("취소할 예약을 선택해주세요");
-		
-		for(CampInfo c : camp) {
-			if(c.getReservId().equals(MainMenu.ID)) {
+
+		for (CampInfo c : camp) {
+			if (c.getReservId().equals(MainMenu.ID)) {
 				System.out.println(c.information());
-				
+
 			}
 		}
-		
+
 		System.out.println("캠핑장 이름 : ");
 		String name = sc.nextLine();
-		
-		
-		for(CampInfo c : camp) {
-			
-			if(c.getCampName().equals(name)) {
-			
+
+		for (CampInfo c : camp) {
+
+			if (c.getCampName().equals(name)) {
+
 				c.setReservId(" ");
 				System.out.println("성공적으로 취소되었습니다.");
 				return;
 			}
-			
+
 		}
-		
+
 		System.out.println("입력한 이름과 일치하는 예약정보가 없습니다.");
-		
-		
-		
+
 	}
-	
+
 	public void campSearch() { // 검색과 예약
 		System.out.println("[등록된 캠핑장 목록]");
 		campList();
-		
+
 		System.out.println("===캠핑장 검색===");
 		System.out.println("검색할 지역 입력 : ");
 		String keyword = sc.nextLine();
 
 		System.out.println("===검색 결과===");
 
-		for(int i = 0; i < camp.size(); i++) {
-			if(camp.get(i).getCampArea().equals(keyword)) {
-				System.out.println(camp.get(i).information());
+		for (int i = 0; i < camp.size(); i++) {
+			if (camp.get(i).getCampArea().equals(keyword)) {
+				if (!camp.get(i).getReservId().isBlank() || !camp.get(i).isState()) {
+					System.out.println(camp.get(i).information());
+				}
 			}
+
 		}
-		
+
 		System.out.println("예약하실 캠핑장 이름을 입력해주세요 : "); // 바로 예약
+
 		String res = sc.nextLine();
-		
+
 		reservation(res);
 	}
 
@@ -340,7 +342,7 @@ public class CampingController {
 			System.out.println(camp.get(i).information());
 		}
 	}
-	
+
 	public void AscCampName() { // 이름 오름차순 정렬
 		Collections.sort(camp, new AscCampName());
 		CampInfoPrint();
@@ -350,24 +352,49 @@ public class CampingController {
 		Collections.sort(camp, new DescCampName());
 		CampInfoPrint();
 	}
-	
+
 	public void AscCampArea() { // 지역 오름차순 정렬
 		Collections.sort(camp, new AscCampArea());
 		CampInfoPrint();
 	}
-	
+
 	public void DescCampArea() {
 		Collections.sort(camp, new DescCampArea());
 		CampInfoPrint();
 	}
-	
+
 	public void AscCampPrice() { // 가격 오름차순 정렬
 		Collections.sort(camp, new AscCampPrice());
 		CampInfoPrint();
 	}
-	
+
 	public void DescCampPrice() {
 		Collections.sort(camp, new DescCampPrice());
 		CampInfoPrint();
 	}
+
+	public void reserveCheck() {
+
+//		System.out.println("예약한 아이디 입력 : ");
+//		String reserveid = sc.nextLine();
+		
+
+
+		for (int i = 0; i < camp.size(); i++) {
+			if (MainMenu.ID.equals(camp.get(i).getReservId())) {
+
+				System.out.println(camp.get(i).information());
+
+			}
+		}
+		
+		System.out.println("예약을 취소하시겠습니까?(y/n)");
+		String yn = sc.nextLine();
+		
+		if(yn.equalsIgnoreCase("Y")) {
+			cancleReserv();
+		}
+
+	}
+
 }
