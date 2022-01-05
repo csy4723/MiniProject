@@ -24,7 +24,7 @@ public class ReviewController {
 	Scanner sc = new Scanner(System.in);
 	Write wr = new Write();
 	ArrayList<Write> rWrite = new ArrayList<Write>();
-	CampingController cc = new CampingController();
+	ArrayList<Write> mWrite = new ArrayList<Write>();
 
 	public ReviewController() {
 	}
@@ -35,6 +35,14 @@ public class ReviewController {
 			System.out.println("[글 번호 " + (index + 1) + "] " + wr.information());
 			index++;
 		}
+	}
+
+	public Calendar setCalendar(int year, int month, int day) {
+
+		Calendar cal = Calendar.getInstance();
+		cal.set(year, month, day);
+
+		return cal;
 	}
 
 	public void ReviewRead() {// 리뷰 파일 읽기
@@ -58,8 +66,7 @@ public class ReviewController {
 				int month = Integer.valueOf(arr2[1]);
 				int day = Integer.valueOf(arr2[2]);
 
-				CampingController cc = new CampingController();
-				Write w = new Write(title, content, cc.setCalendar(year, month, day), id);
+				Write w = new Write(title, content, setCalendar(year, month, day), id);
 
 				rWrite.add(w);
 			}
@@ -71,7 +78,7 @@ public class ReviewController {
 	}
 
 	public void ReviewSave() {// 리뷰파일 저장하기
-
+		
 		File ex = new File("Review.txt");
 
 		if (ex.exists()) {
@@ -172,66 +179,87 @@ public class ReviewController {
 	}
 
 	public void MyReview() {
-		System.out.println("===내 글 조회===");
-		ReviewList();
 
-		System.out.println("1. 내 글 수정");
-		System.out.println("2. 내 글 삭제");
-		System.out.println("9. 이전 메뉴로");
-		System.out.println("메뉴 선택 : ");
-		int menu = sc.nextInt();
-		sc.nextLine();
-
-		switch (menu) {
-		case 1:
-			ReviewEdit();
-			break;
-		case 2:
-			ReviewDetele();
-			break;
+		if (mWrite.isEmpty()) {
+			for (int i = 0; i < rWrite.size(); i++) {
+				if (rWrite.get(i).getUserId().equals(MainMenu.ID)) {
+					mWrite.add(rWrite.get(i));
+				}
+			}
 		}
-	}
-
-	public void ReviewEdit() {
-		System.out.println("===내 글 수정===");
-
-		System.out.println("수정할 게시글의 번호를 입력해주세요 : ");
-		int num = sc.nextInt();
-		sc.nextLine();
-
-		System.out.println("제목 : ");
-		String title = sc.nextLine();
-
-		System.out.println("내용 : ");
-		String content = sc.nextLine();
-
-		Calendar cal = Calendar.getInstance();
-
-		Write r = new Write(title, content, cal, MainMenu.ID);
-
-		rWrite.set(num - 1, r);
-
-		System.out.println("수정이 완료되었습니다.");
-	}
-
-	public void ReviewDetele() {
-		System.out.println("===내 글 삭제===");
-		System.out.println("삭제할 게시글의 번호를 입력해주세요 : ");
-		int num = sc.nextInt();
-		sc.nextLine();
-
 		while (true) {
-			System.out.println("정말 삭제하시겠습니까? (y/n)");
-			String check = sc.nextLine();
+			System.out.println("===내 글 조회===");
 
-			if (check.equalsIgnoreCase("Y")) {
-				rWrite.remove(num - 1);
-				System.out.println("삭제가 완료되었습니다.");
-				break;
-			} else {
-				System.out.println("삭제를 취소되었습니다.");
+			if (mWrite.isEmpty()) {
+				System.out.println("작성된 글이 없습니다.");
 				return;
 			}
+			for (int i = 0; i < mWrite.size(); i++) {
+				System.out.println(i + 1 + ". " + mWrite.get(i).toString());
+			}
+
+			System.out.println("삭제 및 수정할 번호를 입력해주세요 : ");
+			int index = sc.nextInt();
+			sc.nextLine();
+			if (index == 0) {
+				break;
+			}
+			index--;
+
+			System.out.println("1. 내 글 삭제");
+			System.out.println("2. 내 글 수정");
+
+			int num = sc.nextInt();
+			sc.nextLine();
+			System.out.println(mWrite.get(index).toString());
+
+			switch (num) {
+			case 1:
+				System.out.println("이 글을 삭제하시겠습니까? (y/n)");
+				String check = sc.nextLine();
+
+				if (check.equalsIgnoreCase("Y")) {
+					for (int i = 0; i < rWrite.size(); i++) {
+						if (rWrite.get(i).equals(mWrite.get(index))) {
+							rWrite.remove(i);
+						}
+					}
+					mWrite.remove(index);
+					System.out.println("삭제가 완료되었습니다.");
+				} else {
+					System.out.println("삭제를 취소합니다.");
+				}
+				break;
+
+			case 2:
+				System.out.println("이 글을 수정하시겠습니까? (y/n)");
+				String check2 = sc.nextLine();
+
+				if (check2.equalsIgnoreCase("Y")) {
+					System.out.println("수정할 제목 : ");
+					String edit1 = sc.nextLine();
+					for (int i = 0; i < rWrite.size(); i++) {
+						if (rWrite.get(i).equals(mWrite.get(index))) {
+							rWrite.get(i).setTitle(edit1);
+						}
+					}
+					mWrite.get(index).setTitle(edit1);
+
+					System.out.println("수정할 내용 : ");
+					String edit2 = sc.nextLine();
+					for (int i = 0; i < rWrite.size(); i++) {
+						if (rWrite.get(i).equals(mWrite.get(index))) {
+							rWrite.get(i).setContent(edit2);
+						}
+					}
+					mWrite.get(index).setContent(edit2);
+					System.out.println("수정이 완료되었습니다.");
+					break;
+				} else {
+					System.out.println("수정을 취소합니다.");
+				}
+			}
+			break;
 		}
 	}
 
