@@ -80,9 +80,17 @@ public class TransferController {
 	}
 
 	public void postTransfer() { // 양도글 등록 메소드
+
 		// 전체 양도글 조회할땐 파일이 있을테니까 그걸 읽어서 배열에 담아가지고
 
 		System.out.println();
+
+		System.out.println("제목 : ");
+		String title = sc.nextLine();
+ 
+		System.out.println("내용 : ");
+		String content = sc.nextLine();
+
 
 		boolean uState = false;
 		for (CampInfo c : CampingController.camp) {

@@ -30,9 +30,14 @@ public class UserController {
 		System.out.println("회원 가입");
 		String id = "";
 		String pw = "";
+
 		boolean b = true;
 
 		while (b) {
+
+
+		while (true) {
+ 
 
 			System.out.println("아이디와 비밀번호를 입력하세요 ");
 			System.out.println("아이디 입력 : ");
