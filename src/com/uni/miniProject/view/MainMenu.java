@@ -5,9 +5,7 @@ import java.util.Scanner;
 import com.uni.miniProject.controller.CampingController;
 import com.uni.miniProject.controller.FreeBoardController;
 import com.uni.miniProject.controller.MemberController;
-import com.uni.miniProject.controller.ReviewController;
 import com.uni.miniProject.controller.TransferController;
-
 import com.uni.miniProject.controller.UserController;
 
 import com.uni.miniProject.model.vo.CampInfo;
@@ -23,7 +21,6 @@ public class MainMenu {
 	TransferController tc = new TransferController();
 	FreeBoardController fc = new FreeBoardController();
 	UserController uc = new UserController();
-	ReviewController rc = new ReviewController();
 	Scanner sc = new Scanner(System.in);
 
 	public MainMenu() {
@@ -35,11 +32,9 @@ public class MainMenu {
 		boolean out = false;
 		while (!out) {
 			cc.campRead(); // run에서 이걸 먼저 실행하고 main 실행하면 camp이 자꾸 초기화 된다 왜인지 모를
-			uc.userReadFile();
 			tc.tCampRead();
 			fc.freeBoardRead();
-			rc.ReviewRead();
-			
+			//여기서호출
 			System.out.println("1. 로그인 하시겠습니까? ");
 			System.out.println("2. 회원 가입 하시겠습니까? ");
 			System.out.print("메뉴 입력 : ");
@@ -48,10 +43,10 @@ public class MainMenu {
 
 			switch (openMenu) {
 			case 1:
-				
+				 ID = "admin";// 유저가 아이디 입력한 값을 ID에 담아주세요
 
-				ID = uc.logIn();
-				out = ID == ""? false : true;
+//				ID = uc.logIn();
+				out = true;
 				break;
 			case 2:
 				ID = uc.signUp();
@@ -92,23 +87,18 @@ public class MainMenu {
 				campSearch();
 				break;
 			case 3:
-
 				transferBoard();
-
 				break;
 			case 4:
 				freeBoard();
 				break;
 			case 5:
-				ReviewBoard();
 				break;
 			case 9:
 
 				cc.campWrite();
 				tc.tCampWrite();
 				fc.freeBoardWrite();
-				uc.userSaveFile();
-				rc.ReviewSave();
 				System.out.println("프로그램이 종료됩니다.");
 				return;
 			default:
@@ -119,6 +109,8 @@ public class MainMenu {
 
 		}
 	}
+
+	
 
 	private void adminPage() {
 		while (true) {
@@ -133,7 +125,6 @@ public class MainMenu {
 
 			switch (adminMenu) {
 			case 1:
-				mc.everyWrite();
 				break;
 			case 2:
 				mc.noticList();
@@ -204,15 +195,13 @@ public class MainMenu {
 				uc.updateUser();
 				break;	
 			case 3: // 내 예약 조회
-				cc.reserveCheck();
+				
 				break;
 			case 4: // 포인트 충전
 				uc.pointCharge();
 				break;
 			case 5: // 회원 탈퇴
 				uc.userDelete();
-				uc.userSaveFile();
-				System.exit(0);
 				break;
 			case 9: // 이전메뉴로
 				return;
@@ -290,6 +279,7 @@ public class MainMenu {
 			}
 		}
 	}
+	
 
 	public void campSearch() {
 		while (true) {
@@ -305,11 +295,27 @@ public class MainMenu {
 			switch (search) {
 
 			case 1:
-				cc.campSearch();
-				break;
+				System.out.println("[등록된 캠핑장 목록]");
+				cc.campList();
+
+				System.out.println("==캠핑장 검색==");
+				System.out.println("키워드 입력 : ");
+				String keyword = sc.nextLine();
+
+				System.out.println("검색 결과 = ");
+
 			case 2:
-				cc.campSort();
-				break;
+				System.out.println("===캠핑장 정렬===");
+				System.out.println("1. 지역 오름차순 정렬");
+				System.out.println("2. 지역 내림차순 정렬");
+				System.out.println("3. 제목 오름차순 정렬");
+				System.out.println("4. 제목 내림차순 정렬");
+				System.out.println("5. 가격 오름차순 정렬");
+				System.out.println("6. 가격 내림차순 정렬");
+				System.out.println("9. 이전 메뉴로");
+				System.out.println("메뉴 선택 : ");
+				int campSort = sc.nextInt();
+				sc.nextLine();
 
 			case 9:
 				return;
@@ -321,40 +327,4 @@ public class MainMenu {
 		}
 	}
 
-	
-	public void ReviewBoard() {
-		while (true) {
-			System.out.println("===리뷰 게시판===");
-			System.out.println("1. 리뷰 글 쓰기");
-			System.out.println("2. 리뷰 글 검색");
-			System.out.println("3. 리뷰 글 정렬");
-			System.out.println("4. 내 글 조회");
-			System.out.println("9. 이전 메뉴로");
-			System.out.println("메뉴 선택 : ");
-			int Menu = sc.nextInt();
-			sc.nextLine();
-			
-			switch (Menu) {
-			case 1:
-				rc.ReviewWrite();
-				break;
-			case 2:
-				rc.ReviewSearch();
-				break;
-			case 3:
-				rc.ReviewSort();
-				break;
-			case 4:
-				rc.MyReview();
-				break;
-			case 9:
-				return;
-			default:
-				System.out.println("잘못 입력했습니다. 다시 입력해주세요.");
-				break;
-			}
-		}
-	}
-	
-	
 }
