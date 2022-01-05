@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Scanner;
-
+ 
 import com.uni.miniProject.model.comparator.AscCampArea;
 import com.uni.miniProject.model.comparator.AscCampName;
 import com.uni.miniProject.model.comparator.AscCampPrice;
@@ -25,14 +25,14 @@ import com.uni.miniProject.model.vo.Member;
 import com.uni.miniProject.view.MainMenu;
 
 public class CampingController {
-	ArrayList<CampInfo> camp = new ArrayList<CampInfo>();// 캠핑 예약 상품 담을 리스트
+	static ArrayList<CampInfo> camp = new ArrayList<CampInfo>();// 캠핑 예약 상품 담을 리스트
 	Scanner sc = new Scanner(System.in);
 	CampInfo cinfo = new CampInfo();
 	FileOutputStream fos = null;
 	Member mem = new Member();
+	UserController u = new UserController();
 
 	public CampingController() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public void campRegister() {
@@ -68,11 +68,8 @@ public class CampingController {
 
 		for (int i = 0; i < camp.size(); i++) {
 			if (camp.get(i).getReservId().isBlank()) {
-
 				System.out.println(camp.get(i).information());
-			}
 		}
-
 	}
 
 	public void campDelete() {
@@ -126,7 +123,6 @@ public class CampingController {
 		} catch (EOFException e) {
 
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -158,7 +154,6 @@ public class CampingController {
 			}
 
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -194,9 +189,19 @@ public class CampingController {
 
 					camp.get(i).setReservId(MainMenu.ID);
 
+					int j = 0;
+					for (Member u : UserController.user) {
+
+						if (UserController.user.get(j).getUserId().equals(MainMenu.ID)) {
+							break;
+						}
+						j++;
+					}
+
 					System.out.println(MainMenu.ID + "님이 " + camp.get(i).getCampName() + "을 예약했습니다.");
-					System.out.println("잔여 포인트 : " + mem.getPoint());
+					System.out.println("잔여 포인트 : " + UserController.user.get(j).getPoint());
 					System.out.println("조회 밎 취소는 마이페이지에서 하실 수 있습니다.");
+					return;
 
 				}
 
@@ -210,15 +215,28 @@ public class CampingController {
 
 	private int payment(String res, int num) {// 포인트 결제
 
+		int i = 0;
+		for (Member u : UserController.user) {
+
+			if (UserController.user.get(i).getUserId().equals(MainMenu.ID)) {
+				break;
+			}
+			i++;
+		}
+
 		int cP = camp.get(num).getCampPrice();
-		int mP = mem.getPoint(); // 현재 회원의 포인트
+		int mP = UserController.user.get(i).getPoint();// 현재 회원의 포인트
+
+		System.out.println(cP + " " + mP);
 
 		int result = 0;
 		if (mP < cP) {
 			result = 0;
 		} else if (mP >= cP) {
 			result = 1;
-			mem.setPoint(mP - cP);
+
+			UserController.user.get(i).setPoint(mP - cP);
+			System.out.println(UserController.user.get(i).getPoint());
 		}
 
 		return result;
@@ -348,4 +366,27 @@ public class CampingController {
 		Collections.sort(camp, new DescCampPrice());
 		CampInfoPrint();
 	}
+
+	public void reserveCheck() {
+
+		System.out.println("예약한 아이디 입력 : ");
+		String reserveid = sc.nextLine();
+
+		for (int i = 0; i < camp.size(); i++) {
+			if (MainMenu.ID.equals(camp.get(i).getReservId())) {
+
+				System.out.println(camp.get(i).information());
+
+			}
+		}
+		
+		System.out.println("예약을 취소하시겠습니까?(y/n)");
+		String yn = sc.nextLine();
+		
+		if(yn.equalsIgnoreCase("Y")) {
+			cancleReserv();
+		}
+
+	}
+
 }

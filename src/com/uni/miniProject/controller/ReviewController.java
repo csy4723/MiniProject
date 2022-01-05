@@ -23,8 +23,9 @@ public class ReviewController {
 
 	Scanner sc = new Scanner(System.in);
 	Write wr = new Write();
-	ArrayList<Write> rWrite = new ArrayList<Write>();
+	static ArrayList<Write> rWrite = new ArrayList<Write>();
 	ArrayList<Write> mWrite = new ArrayList<Write>();
+	CampingController cc = new CampingController();
 
 	public ReviewController() {
 	}
@@ -78,7 +79,7 @@ public class ReviewController {
 	}
 
 	public void ReviewSave() {// 리뷰파일 저장하기
-		
+
 		File ex = new File("Review.txt");
 
 		if (ex.exists()) {
@@ -96,7 +97,6 @@ public class ReviewController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 	}
 
 	public void ReviewWrite() {
@@ -112,6 +112,10 @@ public class ReviewController {
 
 		wr = new Write(title, content, cal, MainMenu.ID);
 		rWrite.add(wr);
+
+		int lastindex = rWrite.size() - 1;
+
+		mWrite.add(rWrite.get(lastindex));
 
 		System.out.println("리뷰 작성이 완료되었습니다.");
 	}

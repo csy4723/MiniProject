@@ -8,7 +8,7 @@ public class UserInfo {
 	public UserInfo() {
 		// TODO Auto-generated constructor stub
 	}
-
+ 
 	public UserInfo(String id, String pw) {
 		super();
 		Id = id;
