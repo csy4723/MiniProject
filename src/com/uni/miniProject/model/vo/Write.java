@@ -8,7 +8,7 @@ public class Write {// 글 기본 토대가 되는 클래스, 이거 그대로 �
 	private String content; 
 	private Calendar date;
 	private String userId;
-	 
+	
 	public Write() {
 		// TODO Auto-generated constructor stub
 	}
@@ -20,7 +20,6 @@ public class Write {// 글 기본 토대가 되는 클래스, 이거 그대로 �
 		this.date = date;
 		this.userId = userId;
 	}
-	
 
 	public String getTitle() {
 		return title;
@@ -61,16 +60,17 @@ public class Write {// 글 기본 토대가 되는 클래스, 이거 그대로 �
 		return "Write [제목 : " + title + ", 내용 : " + content + ", 작성 날짜 : " + today + ", 작성자 :" + userId + "]";
 	}
 	
-	public String information() {
-		SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
-		String today = sf.format(date.getTime());
-		return "제목: " + title + " ||내용: " + content + " ||날짜: " + today + " ||작성자: " + userId;
-	}
 	
 	public String toStrFile() {
 		SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
 		String today = sf.format(date.getTime());
 		return title + "," + content + "," + today + "," + userId ;
 	}
+	
+	public String information() {
+	      SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
+	      String today = sf.format(date.getTime());
+	      return "제목: " + title + " /내용: " + content + " /날짜: " + today + " /작성자: " + userId;
+	   }
 
 }

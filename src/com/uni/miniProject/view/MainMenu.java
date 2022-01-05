@@ -27,6 +27,7 @@ public class MainMenu {
 	Scanner sc = new Scanner(System.in);
 
 	public MainMenu() {
+		// TODO Auto-generated constructor stub
 	}
 
 	public void mainMenu() {
@@ -38,6 +39,7 @@ public class MainMenu {
 			tc.tCampRead();
 			fc.freeBoardRead();
 			rc.ReviewRead();
+			
 			System.out.println("1. 로그인 하시겠습니까? ");
 			System.out.println("2. 회원 가입 하시겠습니까? ");
 			System.out.print("메뉴 입력 : ");
@@ -45,21 +47,22 @@ public class MainMenu {
 			sc.nextLine();
 
 			switch (openMenu) {
-			case 1:
-				
+	         case 1:
+	            
 
-				ID = uc.logIn();
-				out = true;
-				break;
-			case 2:
-				ID = uc.signUp();
-				out = true;
-				break;
-			default:
-				System.out.println("잘못 입력하셨습니다.다시 입력하세요");
-				continue;
-			}
+	            ID = uc.logIn();
+	            out = ID == ""? false : true;
+	            break;
+	         case 2:
+	            ID = uc.signUp();
+	            out = true;
+	            break;
+	         default:
+	            System.out.println("잘못 입력하셨습니다.다시 입력하세요");
+	            continue;
+	         }
 
+	      
 		}
 
 		while (true) {
@@ -90,9 +93,7 @@ public class MainMenu {
 				campSearch();
 				break;
 			case 3:
-
 				transferBoard();
-
 				break;
 			case 4:
 				freeBoard();
@@ -101,6 +102,7 @@ public class MainMenu {
 				ReviewBoard();
 				break;
 			case 9:
+
 				cc.campWrite();
 				tc.tCampWrite();
 				fc.freeBoardWrite();
@@ -300,6 +302,7 @@ public class MainMenu {
 			sc.nextLine();
 
 			switch (search) {
+
 			case 1:
 				cc.campSearch();
 				break;
@@ -316,6 +319,7 @@ public class MainMenu {
 			}
 		}
 	}
+
 	
 	public void ReviewBoard() {
 		while (true) {

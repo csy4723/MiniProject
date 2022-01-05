@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Scanner;
- 
+
 import com.uni.miniProject.model.comparator.AscCampArea;
 import com.uni.miniProject.model.comparator.AscCampName;
 import com.uni.miniProject.model.comparator.AscCampPrice;
@@ -33,6 +33,7 @@ public class CampingController {
 	UserController u = new UserController();
 
 	public CampingController() {
+		// TODO Auto-generated constructor stub
 	}
 
 	public void campRegister() {
@@ -67,9 +68,12 @@ public class CampingController {
 	public void campList() {
 
 		for (int i = 0; i < camp.size(); i++) {
-			if (camp.get(i).getReservId().isBlank()) {
+			
+
 				System.out.println(camp.get(i).information());
+			
 		}
+
 	}
 
 	public void campDelete() {
@@ -123,6 +127,7 @@ public class CampingController {
 		} catch (EOFException e) {
 
 		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -154,6 +159,7 @@ public class CampingController {
 			}
 
 		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -369,8 +375,10 @@ public class CampingController {
 
 	public void reserveCheck() {
 
-		System.out.println("예약한 아이디 입력 : ");
-		String reserveid = sc.nextLine();
+//		System.out.println("예약한 아이디 입력 : ");
+//		String reserveid = sc.nextLine();
+		
+
 
 		for (int i = 0; i < camp.size(); i++) {
 			if (MainMenu.ID.equals(camp.get(i).getReservId())) {

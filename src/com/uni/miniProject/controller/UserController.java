@@ -30,14 +30,9 @@ public class UserController {
 		System.out.println("회원 가입");
 		String id = "";
 		String pw = "";
-
 		boolean b = true;
 
 		while (b) {
-
-
-		while (true) {
- 
 
 			System.out.println("아이디와 비밀번호를 입력하세요 ");
 			System.out.println("아이디 입력 : ");
@@ -137,28 +132,26 @@ public class UserController {
 
 				for (Member u : user) {
 
-					if (!u.getUserId().equals(id) || !u.getUserPwd().equals(pw)) {
-						b = false;
-					} else if (u.getUserId().equals(id) && u.getUserPwd().equals(pw)) {
-						System.out.println(id + "님 로그인 되었습니다.");
-						b = true;
-						break;
-					}
+		               if (!u.getUserId().equals(id) || !u.getUserPwd().equals(pw)) {
+		                  b = false;
+		               } else if (u.getUserId().equals(id) && u.getUserPwd().equals(pw)) {
+		                  System.out.println(id + "님 로그인 되었습니다.");
+		                  b = true;
+		                  break;
+		               }
+		            }
+		         }
 
-				}
+		         if (b) {
+		            break;
+		         }
+		         System.out.println("아이디 혹은 비밀번호를 다시확인해 주세요");
+		         return "";
+		      }
+		      return id;
+		   }
 
-			}
-
-			if (b) {
-				break;
-			}
-			System.out.println("아이디 혹은 비밀번호를 다시확인해 주세요");
-
-		}
-
-		return id;
-
-	}
+	
 
 	public void userDelete() {// 회원 탈퇴
 

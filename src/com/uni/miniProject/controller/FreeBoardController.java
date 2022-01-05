@@ -27,8 +27,6 @@ public class FreeBoardController {
 	static ArrayList<Write> freeBoard = new ArrayList<Write>();// 자유게시판 전체 글들을 담을 리스트
 	ArrayList<Write> myFree = new ArrayList<Write>();// 로그인된 아이디의 글들만 담을 리스트
 
-	
-	
 	public FreeBoardController() {
 	}
 
@@ -39,6 +37,7 @@ public class FreeBoardController {
 				System.out.println("1. 제목검색");
 				System.out.println("2. 내용검색");
 				System.out.println("3. 제목|내용 통합검색");
+				System.out.println("4. 아이디 검색");
 				System.out.println("9. 이전 메뉴로");
 				int num = sc.nextInt();
 				sc.nextLine();
@@ -53,22 +52,29 @@ public class FreeBoardController {
 
 				case 1:
 					for (int i = 0; i < freeBoard.size(); i++) {
-						if (freeBoard.get(i).getTitle().contains(keyword)) {//제목검색
+						if (freeBoard.get(i).getTitle().contains(keyword)) {// 제목검색
 							temp.add(freeBoard.get(i));
 						}
 					}
 					break;
 				case 2:
 					for (int i = 0; i < freeBoard.size(); i++) {
-						if (freeBoard.get(i).getContent().contains(keyword)) {//내용검색
+						if (freeBoard.get(i).getContent().contains(keyword)) {// 내용검색
 							temp.add(freeBoard.get(i));
 						}
 					}
 					break;
 				case 3:
 					for (int i = 0; i < freeBoard.size(); i++) {
-						if (freeBoard.get(i).getTitle().contains(keyword)//통합검색
+						if (freeBoard.get(i).getTitle().contains(keyword)// 통합검색
 								|| freeBoard.get(i).getContent().contains(keyword)) {
+							temp.add(freeBoard.get(i));
+						}
+					}
+					break;
+				case 4:
+					for (int i = 0; i < freeBoard.size(); i++) {
+						if (freeBoard.get(i).getUserId().contains(keyword)) {// 아이디검색
 							temp.add(freeBoard.get(i));
 						}
 					}
@@ -93,30 +99,29 @@ public class FreeBoardController {
 
 	public void freeSort() {
 
-		
 		while (true) {
 			System.out.println("1. 제목 오름차순 정렬");
 			System.out.println("2. 제목 내림차순 정렬");
 			System.out.println("3. 아이디 오름차순 정렬");
 			System.out.println("4. 아이디 내림차순 정렬");
 			System.out.println("9. 이전 메뉴로");
-			
+
 			int num = sc.nextInt();
 			sc.nextLine();
 			switch (num) {
-			case 1: 
+			case 1:
 				freeBoard.sort(new AscFreeTitle());// 제목 오름차순
 				System.out.println("정렬이 완료되었습니다.");
 				return;
-			case 2: 
+			case 2:
 				freeBoard.sort(new DescFreeTitle());// 제목 내림차순
 				System.out.println("정렬이 완료되었습니다.");
 				return;
-			case 3: 
+			case 3:
 				freeBoard.sort(new AscFreeId());// 아이디 오름차순
 				System.out.println("정렬이 완료되었습니다.");
 				return;
-			case 4: 
+			case 4:
 				freeBoard.sort(new DescFreeId());// 아이디 내림차순
 				System.out.println("정렬이 완료되었습니다.");
 				return;
@@ -127,11 +132,7 @@ public class FreeBoardController {
 				System.out.println("잘못 입력하셨습니다. 다시 입력해주세요");
 			}
 		}
-		
-		
-		
-		
-	
+
 	}
 
 	public void myFree() {
@@ -149,7 +150,7 @@ public class FreeBoardController {
 				System.out.println("작성된 글이 없습니다.");
 				return;
 			}
-			for (int i = 0; i < myFree	.size(); i++) {
+			for (int i = 0; i < myFree.size(); i++) {
 				System.out.println(i + 1 + ". " + myFree.get(i).toString());// 내 글 리스트 출력
 			}
 			System.out.println("글 번호 입력 : (이전메뉴 : 0)");
@@ -166,7 +167,7 @@ public class FreeBoardController {
 			System.out.println(myFree.get(index).toString());
 			switch (num) {
 			case 1:
-				
+
 				System.out.println("위 글을 삭제하시겠습니까? (y/n)");
 				String yn = sc.nextLine();
 
@@ -220,10 +221,10 @@ public class FreeBoardController {
 						myFree.get(index).setContent(editContent);// 로그인된 아이디의 글에서 내용 수정
 						break;
 					}
-				}else {
+				} else {
 					System.out.println("수정을 취소합니다.");
 				}
-			
+
 			}
 			break;
 		}
@@ -253,7 +254,7 @@ public class FreeBoardController {
 			System.out.println(w);// 전체 글 리스트 출력
 		}
 	}
-	
+
 	public Calendar setCalendar(int year, int month, int day) {
 
 		Calendar cal = Calendar.getInstance();
@@ -261,7 +262,7 @@ public class FreeBoardController {
 
 		return cal;
 	}
-	
+
 	public void freeBoardRead() {// 파일에 있던 객체를 ArrayList에 담아주는 메소드
 
 		File f = new File("freeBoard.txt");
@@ -272,71 +273,58 @@ public class FreeBoardController {
 			while ((temp = br.readLine()) != null) {
 
 				String[] arr = temp.split(",");
-				
 
 				String title = arr[0];
 				String content = arr[1];
 				String userId = arr[3];
-				
 
 				String[] arr2 = arr[2].split("-");
-				
 
 				int year = Integer.valueOf(arr2[0]);
 				int month = Integer.valueOf(arr2[1]);
 				int day = Integer.valueOf(arr2[2]);
 
-				
 				Write w = new Write(title, content, setCalendar(year, month, day), userId);
-				
+
 				freeBoard.add(w);
 
 			}
 
 		} catch (FileNotFoundException e) {
-			
-		}catch(EOFException e) {
-			
-		}
-		catch (IOException e) {
+
+		} catch (EOFException e) {
+
+		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
-		
-		
-		
 	}
-	
-	
-	
-	public void freeBoardWrite() {// 프로그램 종료할때 저장하는 거 
-		
+
+	public void freeBoardWrite() {// 프로그램 종료할때 저장하는 거
+
 		File ex = new File("freeBoard.txt");
-		
-		if(ex.exists()) {
+
+		if (ex.exists()) {
 			ex.delete();
 		}
-		
-		
+
 		File f = new File("freeBoard.txt");
-		
-	try(BufferedWriter bw = new BufferedWriter(new FileWriter(f.getName()))){
-		
-		for(int i = 0; i < freeBoard.size(); i++) {
-			
-			bw.write(freeBoard.get(i).toStrFile());
-			bw.newLine();
-			
+
+		try (BufferedWriter bw = new BufferedWriter(new FileWriter(f.getName()))) {
+
+			for (int i = 0; i < freeBoard.size(); i++) {
+
+				bw.write(freeBoard.get(i).toStrFile());
+				bw.newLine();
+
+			}
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		
-		
-	} catch (IOException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
-	
-		
+
 	}
 
 }
