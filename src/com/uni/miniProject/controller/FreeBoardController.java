@@ -24,7 +24,7 @@ public class FreeBoardController {
 	Scanner sc = new Scanner(System.in);
 
 	Write wr = new Write();
-	ArrayList<Write> freeBoard = new ArrayList<Write>();// 자유게시판 전체 글들을 담을 리스트
+	static ArrayList<Write> freeBoard = new ArrayList<Write>();// 자유게시판 전체 글들을 담을 리스트
 	ArrayList<Write> myFree = new ArrayList<Write>();// 로그인된 아이디의 글들만 담을 리스트
 
 	

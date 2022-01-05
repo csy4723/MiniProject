@@ -5,7 +5,7 @@ import java.util.Scanner;
 import com.uni.miniProject.controller.CampingController;
 import com.uni.miniProject.controller.FreeBoardController;
 import com.uni.miniProject.controller.MemberController;
-
+import com.uni.miniProject.controller.ReviewController;
 import com.uni.miniProject.controller.TransferController;
 
 import com.uni.miniProject.controller.UserController;
@@ -23,6 +23,7 @@ public class MainMenu {
 	TransferController tc = new TransferController();
 	FreeBoardController fc = new FreeBoardController();
 	UserController uc = new UserController();
+	ReviewController rc = new ReviewController();
 	Scanner sc = new Scanner(System.in);
 
 	public MainMenu() {
@@ -37,6 +38,7 @@ public class MainMenu {
 			uc.userReadFile();
 			tc.tCampRead();
 			fc.freeBoardRead();
+			rc.ReviewRead();
 			
 			System.out.println("1. 로그인 하시겠습니까? ");
 			System.out.println("2. 회원 가입 하시겠습니까? ");
@@ -46,7 +48,7 @@ public class MainMenu {
 
 			switch (openMenu) {
 			case 1:
-				// ID = "admin";// 유저가 아이디 입력한 값을 ID에 담아주세요
+				
 
 				ID = uc.logIn();
 				out = true;
@@ -96,6 +98,7 @@ public class MainMenu {
 				freeBoard();
 				break;
 			case 5:
+				ReviewBoard();
 				break;
 			case 9:
 
@@ -103,6 +106,7 @@ public class MainMenu {
 				tc.tCampWrite();
 				fc.freeBoardWrite();
 				uc.userSaveFile();
+				rc.ReviewSave();
 				System.out.println("프로그램이 종료됩니다.");
 				return;
 			default:
@@ -127,6 +131,7 @@ public class MainMenu {
 
 			switch (adminMenu) {
 			case 1:
+				mc.everyWrite();
 				break;
 			case 2:
 				mc.noticList();
@@ -299,8 +304,10 @@ public class MainMenu {
 
 			case 1:
 				cc.campSearch();
+				break;
 			case 2:
 				cc.campSort();
+				break;
 
 			case 9:
 				return;
@@ -312,4 +319,40 @@ public class MainMenu {
 		}
 	}
 
+	
+	public void ReviewBoard() {
+		while (true) {
+			System.out.println("===리뷰 게시판===");
+			System.out.println("1. 리뷰 글 쓰기");
+			System.out.println("2. 리뷰 글 검색");
+			System.out.println("3. 리뷰 글 정렬");
+			System.out.println("4. 내 글 조회");
+			System.out.println("9. 이전 메뉴로");
+			System.out.println("메뉴 선택 : ");
+			int Menu = sc.nextInt();
+			sc.nextLine();
+			
+			switch (Menu) {
+			case 1:
+				rc.ReviewWrite();
+				break;
+			case 2:
+				rc.ReviewSearch();
+				break;
+			case 3:
+				rc.ReviewSort();
+				break;
+			case 4:
+				rc.MyReview();
+				break;
+			case 9:
+				return;
+			default:
+				System.out.println("잘못 입력했습니다. 다시 입력해주세요.");
+				break;
+			}
+		}
+	}
+	
+	
 }

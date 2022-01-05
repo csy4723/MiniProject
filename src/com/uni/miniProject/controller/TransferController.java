@@ -17,7 +17,7 @@ import com.uni.miniProject.view.MainMenu;
 public class TransferController {
 	Scanner sc = new Scanner(System.in);
 
-	ArrayList<CampInfo> transferCamp = new ArrayList<CampInfo>(); // 전체 양도 글들을 담을 목록
+	static ArrayList<CampInfo> transferCamp = new ArrayList<CampInfo>(); // 전체 양도 글들을 담을 목록
 	ArrayList<CampInfo> loginTransferCamp = new ArrayList<CampInfo>(); // 로그인된 아이디의 양도글 목록
 
 	public TransferController() {

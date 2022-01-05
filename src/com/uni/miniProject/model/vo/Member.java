@@ -108,8 +108,8 @@ public class Member {
 				"\n e-mail: "+email;
 	}
 	public String information() {
-		return "아이디 :" +userId +"\n패스워드 : "+userPwd +"\n"+name+" 회원님의 정보\n 나이 : "+age+"\n성별 : "+gender+
-				"\n e-mail: "+email+"\n현재 포인트 : "+point+"\n현재 예약상태 : " ;// 예약상태 보여주기
+		return "아이디 :" +userId +"\n패스워드 : "+userPwd +"\n"+"\n"+name+" 회원님의 정보\n 나이 : "+age+"\n성별 : "+gender+
+				"\n e-mail: "+email+"\n현재 포인트 : "+point;// 예약상태 보여주기
 	}
 
 	public void updateMember(Member m, int menu, String update) {
