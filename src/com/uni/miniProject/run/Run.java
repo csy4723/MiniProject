@@ -2,6 +2,7 @@ package com.uni.miniProject.run;
 
 
 import com.uni.miniProject.controller.CampingController;
+import com.uni.miniProject.controller.TransferController;
 import com.uni.miniProject.controller.UserController;
 import com.uni.miniProject.model.vo.Member;
 import com.uni.miniProject.view.MainMenu;
@@ -21,6 +22,9 @@ public class Run {
 		mm.mainMenu();
 //		uc.SignUp();
 //		uc.login();
+		
+//		TransferController tc = new TransferController();
+//		tc.postTransfer();
 		
 
 		
