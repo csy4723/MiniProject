@@ -56,15 +56,16 @@ public class TransferController {
 
 			transferCamp.remove(k);// 전체 양도 리스트에서 삭제
 
-			for (int i = 0; i < loginTransferCamp.size(); i++) {
-				if (loginTransferCamp.get(i).getCampName().equals(transferName)) {
-					loginTransferCamp.remove(i);// 양도글 올린사람 아이디의 내 양도에서 삭제
-				}
-			}
+//			for (int i = 0; i < loginTransferCamp.size(); i++) {
+//				if (loginTransferCamp.get(i).getCampName().equals(transferName)) {
+//					loginTransferCamp.remove(i);// 양도글 올린사람 아이디의 내 양도에서 삭제
+//				}
+//			}
 
 			for (int i = 0; i < CampingController.camp.size(); i++) {
 				if (CampingController.camp.get(i).getCampName().equals(transferName)) {
-					CampingController.camp.get(i).setReservId(MainMenu.ID);// 전체 캠핑장에서 양도받을 캠핑 id를 양도받은사람 id로 수정(양도받은사람
+					CampingController.camp.get(i).setReservId(MainMenu.ID);
+					// 전체 캠핑장에서 양도받을 캠핑 id를 양도받은사람 id로 수정(양도받은사람
 																			// 예약에 추가)
 					CampingController.camp.get(i).setState(false);// 양도 등록 상태 X로 전환
 				}
@@ -84,7 +85,7 @@ public class TransferController {
 
 		System.out.println();
 
-		boolean uState = false;
+		boolean uState = false;//예약유무 확인용도
 		for (CampInfo c : CampingController.camp) {
 
 			if (c.getReservId().equals(MainMenu.ID)) {
@@ -204,7 +205,7 @@ public class TransferController {
 				}
 			}
 
-			loginTransferCamp.remove(k);// 로그인된 아이디의 내 양도에서 삭제
+			//loginTransferCamp.remove(k);// 로그인된 아이디의 내 양도에서 삭제
 
 			for (int i = 0; i < CampingController.camp.size(); i++) {
 				if (CampingController.camp.get(i).getCampName().equals(campName)) {

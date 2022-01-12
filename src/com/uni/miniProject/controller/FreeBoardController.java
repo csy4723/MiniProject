@@ -137,12 +137,13 @@ public class FreeBoardController {
 
 	public void myFree() {
 
-		if (myFree.isEmpty()) {
-			for (int i = 0; i < freeBoard.size(); i++) {
-				if (freeBoard.get(i).getUserId().equals(MainMenu.ID)) {// 전체 게시판에서 로그인된 아이디와 같은 글이 있을시
-					myFree.add(freeBoard.get(i)); // 해당 글을 내 글 목록에 담기
-				}
+		myFree.clear();
+		for (int i = 0; i < freeBoard.size(); i++) {
+
+			if (freeBoard.get(i).getUserId().equals(MainMenu.ID)) {// 전체 게시판에서 로그인된 아이디와 같은 글이 있을시
+				myFree.add(freeBoard.get(i)); // 해당 글을 내 글 목록에 담기
 			}
+
 		}
 		while (true) {
 			System.out.println("===내 글 조회===");
@@ -206,7 +207,6 @@ public class FreeBoardController {
 							}
 						}
 
-						myFree.get(index).setTitle(editTitle);// 로그인된 아이디의 글에서 제목 수정
 						break;
 
 					case 2:
@@ -218,7 +218,6 @@ public class FreeBoardController {
 							}
 						}
 
-						myFree.get(index).setContent(editContent);// 로그인된 아이디의 글에서 내용 수정
 						break;
 					}
 				} else {
